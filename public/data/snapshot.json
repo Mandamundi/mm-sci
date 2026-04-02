@@ -1,0 +1,122 @@
+[
+  {
+    "country": "United States",
+    "id": "USA",
+    "flag": "🇺🇸",
+    "sci": 91.55407076096948,
+    "sci_date": "2025-12-01",
+    "market_implied": 89.0949650749712,
+    "spread": 0.8045206771868951,
+    "market_date": "2024-12-23"
+  },
+  {
+    "country": "Germany",
+    "id": "DEU",
+    "flag": "🇩🇪",
+    "sci": 82.87544496369813,
+    "sci_date": "2025-12-01",
+    "market_implied": null,
+    "spread": null,
+    "market_date": null
+  },
+  {
+    "country": "China",
+    "id": "CHN",
+    "flag": "🇨🇳",
+    "sci": 75.76058689007753,
+    "sci_date": "2025-12-01",
+    "market_implied": 73.72886493995941,
+    "spread": 3.543297980970388,
+    "market_date": "2024-12-23"
+  },
+  {
+    "country": "Brazil",
+    "id": "BRA",
+    "flag": "🇧🇷",
+    "sci": 69.51783722810667,
+    "sci_date": "2025-12-01",
+    "market_implied": null,
+    "spread": null,
+    "market_date": null
+  },
+  {
+    "country": "India",
+    "id": "IND",
+    "flag": "🇮🇳",
+    "sci": 63.45744422496675,
+    "sci_date": "2025-12-01",
+    "market_implied": 60.70051785415749,
+    "spread": -3.844251135593284,
+    "market_date": "2024-12-23"
+  },
+  {
+    "country": "United Kingdom",
+    "id": "GBR",
+    "flag": "🇬🇧",
+    "sci": 60.742687972763925,
+    "sci_date": "2025-12-01",
+    "market_implied": null,
+    "spread": null,
+    "market_date": null
+  },
+  {
+    "country": "France",
+    "id": "FRA",
+    "flag": "🇫🇷",
+    "sci": 50.03587156759589,
+    "sci_date": "2025-12-01",
+    "market_implied": 42.19033507940544,
+    "spread": 1.2495812469187584,
+    "market_date": "2024-12-23"
+  },
+  {
+    "country": "Italy",
+    "id": "ITA",
+    "flag": "🇮🇹",
+    "sci": 53.3277701692478,
+    "sci_date": "2025-12-01",
+    "market_implied": null,
+    "spread": null,
+    "market_date": null
+  },
+  {
+    "country": "Japan",
+    "id": "JPN",
+    "flag": "🇯🇵",
+    "sci": 49.1838312997782,
+    "sci_date": "2025-12-01",
+    "market_implied": 46.16486513983321,
+    "spread": -1.9539089572123003,
+    "market_date": "2024-12-23"
+  },
+  {
+    "country": "South Africa",
+    "id": "ZAF",
+    "flag": "🇿🇦",
+    "sci": 36.02018768953023,
+    "sci_date": "2025-12-01",
+    "market_implied": null,
+    "spread": null,
+    "market_date": null
+  },
+  {
+    "country": "Argentina",
+    "id": "ARG",
+    "flag": "🇦🇷",
+    "sci": 30.424323464782855,
+    "sci_date": "2025-12-01",
+    "market_implied": 22.734550427656792,
+    "spread": -0.8223770693667709,
+    "market_date": "2024-12-23"
+  },
+  {
+    "country": "Mexico",
+    "id": "MEX",
+    "flag": "🇲🇽",
+    "sci": 28.44948076694278,
+    "sci_date": "2025-12-01",
+    "market_implied": null,
+    "spread": null,
+    "market_date": null
+  }
+]

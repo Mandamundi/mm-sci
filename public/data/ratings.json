@@ -1,0 +1,242 @@
+{
+  "United States": {
+    "latest": {
+      "S&P": {
+        "rating": "AAA",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Aaa",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "AAA",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "Germany": {
+    "latest": {
+      "S&P": {
+        "rating": "AAA",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Aaa",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "AAA",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "China": {
+    "latest": {
+      "S&P": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "A2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "Brazil": {
+    "latest": {
+      "S&P": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "A2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "India": {
+    "latest": {
+      "S&P": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "A2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "United Kingdom": {
+    "latest": {
+      "S&P": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "A2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "A",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "France": {
+    "latest": {
+      "S&P": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Ba2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "Italy": {
+    "latest": {
+      "S&P": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Ba2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "Japan": {
+    "latest": {
+      "S&P": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Ba2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "South Africa": {
+    "latest": {
+      "S&P": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Ba2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "Argentina": {
+    "latest": {
+      "S&P": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Ba2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  },
+  "Mexico": {
+    "latest": {
+      "S&P": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-01-01"
+      },
+      "Moody's": {
+        "rating": "Ba2",
+        "outlook": "Positive",
+        "date": "2024-02-01"
+      },
+      "Fitch": {
+        "rating": "BB",
+        "outlook": "Stable",
+        "date": "2024-03-01"
+      }
+    },
+    "history": []
+  }
+}

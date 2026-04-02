@@ -1,0 +1,14 @@
+{
+  "last_updated": "2026-04-02T06:52:20.209Z",
+  "n_countries_sci": 12,
+  "n_countries_market": 6,
+  "regression": {
+    "slope": 0.85,
+    "r2_within": 0.9,
+    "r2_overall": 0.88,
+    "intercepts": {
+      "United States": 1.2,
+      "Germany": 0.5
+    }
+  }
+}
