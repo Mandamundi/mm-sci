@@ -1,0 +1,80 @@
+Country,Agency,Rating,Outlook,Date
+Lebanon,Fitch,BB,Negative,1998-02-01
+Lebanon,Fitch,BB-,Negative,2000-09-01
+Lebanon,Fitch,B+,Stable,2001-02-01
+Lebanon,Fitch,B-,Stable,2001-09-01
+Lebanon,Fitch,B-,Positive,2005-11-01
+Lebanon,Fitch,B-,Stable,2006-07-01
+Lebanon,Fitch,B,Stable,2010-03-01
+Lebanon,Fitch,B,Stable,2011-07-01
+Lebanon,Fitch,B,Stable,2012-04-01
+Lebanon,Fitch,B,Stable,2012-07-01
+Lebanon,Fitch,B,Stable,2013-05-01
+Lebanon,Fitch,B,Stable,2013-07-01
+Lebanon,Fitch,B,Negative,2013-12-01
+Lebanon,Fitch,B,Negative,2014-04-01
+Lebanon,Fitch,B,Negative,2014-06-01
+Lebanon,Fitch,B,Negative,2015-12-01
+Lebanon,Fitch,B-,Stable,2016-07-01
+Lebanon,Fitch,B-,Stable,2017-02-01
+Lebanon,Fitch,B-,Stable,2017-09-01
+Lebanon,Fitch,B-,Stable,2017-09-01
+Lebanon,Fitch,B-,Stable,2018-02-01
+Lebanon,Fitch,B-,Negative,2018-12-01
+Lebanon,Fitch,CCC,Developing,2019-08-01
+Lebanon,Fitch,CC,Developing,2019-12-01
+Lebanon,Fitch,C,Developing,2020-03-01
+Lebanon,Fitch,RD,Developing,2020-03-01
+Lebanon,Fitch,RD,Developing,2021-08-01
+Lebanon,Moody's,B2,Negative,2003-12-01
+Lebanon,Moody's,B3,Stable,2005-03-01
+Lebanon,Moody's,B3,Negative,2006-11-01
+Lebanon,Moody's,B3,Stable,2008-03-01
+Lebanon,Moody's,B3,Positive,2008-12-01
+Lebanon,Moody's,B2,Stable,2009-04-01
+Lebanon,Moody's,B2,Positive,2009-12-01
+Lebanon,Moody's,B1,Stable,2010-04-01
+Lebanon,Moody's,B1,Negative,2013-05-01
+Lebanon,Moody's,B2,Negative,2014-12-01
+Lebanon,Moody's,B2,Negative,2016-06-01
+Lebanon,Moody's,B3,Stable,2017-08-01
+Lebanon,Moody's,B3,Negative,2018-12-01
+Lebanon,Moody's,Caa1,Stable,2019-01-01
+Lebanon,Moody's,Caa1,Negative watch,2019-10-01
+Lebanon,Moody's,Caa2,Negative watch,2019-11-01
+Lebanon,Moody's,Ca,Stable,2020-02-01
+Lebanon,Moody's,Ca,Stable,2020-02-01
+Lebanon,Moody's,C,Under Review,2020-07-01
+Lebanon,Moody's,C,Stable,2023-12-01
+Lebanon,Moody's,C,Stable,2025-11-01
+Lebanon,S&P,BB-,Stable,1997-02-01
+Lebanon,S&P,BB-,Negative,1998-02-01
+Lebanon,S&P,BB-,Negative watch,2000-06-01
+Lebanon,S&P,B+,Stable,2000-09-01
+Lebanon,S&P,B+,Negative,2001-05-01
+Lebanon,S&P,B,Negative,2001-09-01
+Lebanon,S&P,B-,Negative,2002-04-01
+Lebanon,S&P,B-,Stable,2002-12-01
+Lebanon,S&P,B-,Positive,2003-04-01
+Lebanon,S&P,B-,Stable,2003-10-01
+Lebanon,S&P,B-,Stable,2005-11-01
+Lebanon,S&P,B-,Stable,2005-11-01
+Lebanon,S&P,B-,Negative watch,2006-07-01
+Lebanon,S&P,B-,Negative,2006-09-01
+Lebanon,S&P,B-,Negative watch,2007-11-01
+Lebanon,S&P,CCC+,Stable,2008-01-01
+Lebanon,S&P,B-,Stable,2008-08-01
+Lebanon,S&P,B,Positive,2009-12-01
+Lebanon,S&P,B,Stable,2011-01-01
+Lebanon,S&P,B,Negative,2012-05-01
+Lebanon,S&P,B-,Negative,2013-11-01
+Lebanon,S&P,B-,Stable,2014-04-01
+Lebanon,S&P,B-,Negative,2015-09-01
+Lebanon,S&P,B-,Stable,2016-09-01
+Lebanon,S&P,B-,Negative,2019-03-01
+Lebanon,S&P,NR,NR,2019-04-01
+Lebanon,S&P,NR,NR,2019-05-01
+Lebanon,S&P,B-,Negative watch,2019-10-01
+Lebanon,S&P,CCC,NM,2019-11-01
+Lebanon,S&P,NR,NR,2019-12-01
+Lebanon,S&P,SD,NM,2020-03-01

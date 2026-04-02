@@ -1,0 +1,10 @@
+Country,Agency,Rating,Outlook,Date
+Mali,Fitch,B-,Stable,2004-04-01
+Mali,Moody's,Caa1,Negative,2020-09-01
+Mali,Moody's,Caa1,Stable,2021-03-01
+Mali,Moody's,Caa2,Under Review,2022-02-01
+Mali,Moody's,Caa2,Negative,2022-05-01
+Mali,Moody's,Caa2,Stable,2022-09-01
+Mali,Moody's,Caa2,Stable,2024-06-01
+Mali,S&P,B,Stable,2004-05-01
+Mali,S&P,B,Stable,2005-11-01

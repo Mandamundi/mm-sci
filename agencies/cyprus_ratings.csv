@@ -1,0 +1,108 @@
+Country,Agency,Rating,Outlook,Date
+Cyprus,Fitch,A+,Stable,2002-02-01
+Cyprus,Fitch,A+,Positive,2003-11-01
+Cyprus,Fitch,AA-,Stable,2007-07-01
+Cyprus,Fitch,A-,Negative,2011-05-01
+Cyprus,Fitch,BBB,Negative,2011-08-01
+Cyprus,Fitch,BBB,Negative,2011-10-01
+Cyprus,Fitch,BBB,Negative,2011-12-01
+Cyprus,Fitch,BBB-,Negative,2012-01-01
+Cyprus,Fitch,BB+,Negative,2012-06-01
+Cyprus,Fitch,B,Negative,2013-03-01
+Cyprus,Fitch,B-,Negative,2013-06-01
+Cyprus,Fitch,B-,Negative,2013-07-01
+Cyprus,Fitch,B-,Negative,2013-11-01
+Cyprus,Fitch,B-,Negative,2014-01-01
+Cyprus,Fitch,B-,Negative,2014-02-01
+Cyprus,Fitch,B-,Stable,2014-04-01
+Cyprus,Fitch,B-,Stable,2014-05-01
+Cyprus,Fitch,B-,Stable,2014-06-01
+Cyprus,Fitch,B+,Positive,2015-10-01
+Cyprus,Fitch,B+,Positive,2016-04-01
+Cyprus,Fitch,B+,Positive,2016-07-01
+Cyprus,Fitch,BB-,Positive,2016-10-01
+Cyprus,Fitch,BB-,Positive,2017-04-01
+Cyprus,Fitch,BB,Positive,2017-10-01
+Cyprus,Fitch,BB+,Positive,2018-04-01
+Cyprus,Fitch,BBB-,Stable,2019-04-01
+Cyprus,Fitch,BBB-,Positive,2019-10-01
+Cyprus,Fitch,BBB-,Stable,2020-04-01
+Cyprus,Fitch,BBB-,Stable,2020-04-01
+Cyprus,Fitch,BBB-,Stable,2020-10-01
+Cyprus,Fitch,BBB-,Stable,2021-03-01
+Cyprus,Fitch,BBB-,Stable,2021-09-01
+Cyprus,Fitch,BBB-,Stable,2022-03-01
+Cyprus,Fitch,BBB-,Stable,2022-09-01
+Cyprus,Fitch,BBB,Stable,2023-03-01
+Cyprus,Fitch,BBB,Stable,2023-06-01
+Cyprus,Fitch,BBB,Positive,2023-12-01
+Cyprus,Fitch,BBB+,Positive,2024-06-01
+Cyprus,Fitch,A-,Stable,2024-12-01
+Cyprus,Fitch,A-,Stable,2025-05-01
+Cyprus,Fitch,A-,Positive,2025-11-01
+Cyprus,Moody's,A2,Negative,2000-05-01
+Cyprus,Moody's,A2,Stable,2001-03-01
+Cyprus,Moody's,A2,Stable,2001-05-01
+Cyprus,Moody's,A2,Stable,2003-04-01
+Cyprus,Moody's,A2,Positive,2006-03-01
+Cyprus,Moody's,A2,Positive watch,2007-05-01
+Cyprus,Moody's,A1,Positive,2007-07-01
+Cyprus,Moody's,Aa3,Stable,2008-01-01
+Cyprus,Moody's,Aa3,Negative watch,2011-01-01
+Cyprus,Moody's,A2,Stable,2011-02-01
+Cyprus,Moody's,A2,Under Review,2011-05-01
+Cyprus,Moody's,Baa1,Negative,2011-07-01
+Cyprus,Moody's,Baa3,Negative watch,2011-11-01
+Cyprus,Moody's,Ba1,Negative,2012-03-01
+Cyprus,Moody's,Ba3,Negative watch,2012-06-01
+Cyprus,Moody's,B3,Negative,2012-10-01
+Cyprus,Moody's,B3,Negative watch,2012-11-01
+Cyprus,Moody's,Caa3,Negative,2013-01-01
+Cyprus,Moody's,Caa3,Positive,2014-03-01
+Cyprus,Moody's,B3,Stable,2014-11-01
+Cyprus,Moody's,B1,Stable,2015-11-01
+Cyprus,Moody's,B1,Positive,2016-11-01
+Cyprus,Moody's,Ba3,Positive,2017-07-01
+Cyprus,Moody's,Ba2,Stable,2018-07-01
+Cyprus,Moody's,Ba2,Positive,2019-09-01
+Cyprus,Moody's,Ba1,Stable,2021-07-01
+Cyprus,Moody's,Ba1,Positive,2022-08-01
+Cyprus,Moody's,Baa2,Stable,2023-09-01
+Cyprus,Moody's,Baa2,Positive,2024-05-01
+Cyprus,Moody's,A3,Stable,2024-11-01
+Cyprus,S&P,AA-,Stable,1994-02-01
+Cyprus,S&P,AA-,Stable,1996-07-01
+Cyprus,S&P,A+,Stable,1998-11-01
+Cyprus,S&P,A,Stable,1999-12-01
+Cyprus,S&P,A,Stable,2003-08-01
+Cyprus,S&P,A,Stable,2004-02-01
+Cyprus,S&P,A,Stable,2004-12-01
+Cyprus,S&P,A,Stable,2005-11-01
+Cyprus,S&P,A,Positive,2007-03-01
+Cyprus,S&P,A,Positive,2007-07-01
+Cyprus,S&P,A+,Stable,2008-04-01
+Cyprus,S&P,A+,Negative watch,2010-07-01
+Cyprus,S&P,A,Negative,2010-11-01
+Cyprus,S&P,A-,Negative,2011-03-01
+Cyprus,S&P,BBB+,Negative,2011-07-01
+Cyprus,S&P,BBB+,Negative watch,2011-08-01
+Cyprus,S&P,BBB,Negative watch,2011-10-01
+Cyprus,S&P,BB+,Negative,2012-01-01
+Cyprus,S&P,BB,Negative watch,2012-08-01
+Cyprus,S&P,B,Negative watch,2012-10-01
+Cyprus,S&P,CCC+,Negative,2012-12-01
+Cyprus,S&P,CCC,Negative,2013-03-01
+Cyprus,S&P,CCC,Stable,2013-04-01
+Cyprus,S&P,CCC+,Stable,2013-07-01
+Cyprus,S&P,B-,Stable,2013-11-01
+Cyprus,S&P,B,Positive,2014-04-01
+Cyprus,S&P,B+,Stable,2014-10-01
+Cyprus,S&P,B+,Positive,2015-03-01
+Cyprus,S&P,BB-,Positive,2015-09-01
+Cyprus,S&P,BB,Positive,2016-09-01
+Cyprus,S&P,BB+,Stable,2017-03-01
+Cyprus,S&P,BB+,Positive,2017-09-01
+Cyprus,S&P,BBB-,Stable,2018-09-01
+Cyprus,S&P,BBB,Positive,2023-09-01
+Cyprus,S&P,BBB+,Positive,2024-06-01
+Cyprus,S&P,A-,Positive,2025-11-01

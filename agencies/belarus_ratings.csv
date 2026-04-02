@@ -1,0 +1,44 @@
+Country,Agency,Rating,Outlook,Date
+Belarus,Fitch,B-,Stable,2016-02-01
+Belarus,Fitch,B-,Stable,2016-07-01
+Belarus,Fitch,B-,Stable,2016-08-01
+Belarus,Fitch,B-,Stable,2017-02-01
+Belarus,Fitch,B-,Positive,2017-07-01
+Belarus,Fitch,B,Stable,2018-01-01
+Belarus,Fitch,B,Stable,2018-07-01
+Belarus,Fitch,B,Stable,2019-01-01
+Belarus,Fitch,B,Stable,2019-07-01
+Belarus,Fitch,B,Stable,2019-11-01
+Belarus,Fitch,B,Stable,2020-05-01
+Belarus,Fitch,B,Negative,2020-11-01
+Belarus,Fitch,B,Negative,2021-05-01
+Belarus,Fitch,B,Negative,2021-11-01
+Belarus,Fitch,CCC,NR,2022-03-01
+Belarus,Moody's,B1,Stable,2007-08-01
+Belarus,Moody's,B2,Negative,2011-03-01
+Belarus,Moody's,B3,Negative watch,2011-07-01
+Belarus,Moody's,B3,Negative,2011-11-01
+Belarus,Moody's,B3,Negative,2013-06-01
+Belarus,Moody's,B3,Negative watch,2015-02-01
+Belarus,Moody's,Caa1,Negative,2015-04-01
+Belarus,Moody's,Caa1,Stable,2016-06-01
+Belarus,Moody's,B3,Stable,2018-03-01
+Belarus,Moody's,B3,Stable,2019-01-01
+Belarus,Moody's,B3,Stable,2020-02-01
+Belarus,Moody's,B3,Negative,2021-10-01
+Belarus,Moody's,Ca,Negative,2022-03-01
+Belarus,Moody's,C,Stable,2023-06-01
+Belarus,Moody's,C,Stable,2024-10-01
+Belarus,S&P,B+,Stable,2007-08-01
+Belarus,S&P,B+,Negative,2008-11-01
+Belarus,S&P,B,Negative,2011-03-01
+Belarus,S&P,B,Negative watch,2011-05-01
+Belarus,S&P,B-,Negative,2011-09-01
+Belarus,S&P,B-,Stable,2012-04-01
+Belarus,S&P,B-,Stable,2012-07-01
+Belarus,S&P,B-,Positive,2013-04-01
+Belarus,S&P,B-,Stable,2013-10-01
+Belarus,S&P,B,Stable,2017-10-01
+Belarus,S&P,B,Negative,2020-09-01
+Belarus,S&P,C,Negative watch,2022-03-01
+Belarus,S&P,CC,Negative watch,2022-05-01

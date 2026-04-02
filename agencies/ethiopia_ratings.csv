@@ -1,0 +1,31 @@
+Country,Agency,Rating,Outlook,Date
+Ethiopia,Fitch,B,Stable,2014-05-01
+Ethiopia,Fitch,B,Stable,2014-11-01
+Ethiopia,Fitch,B,Stable,2015-10-01
+Ethiopia,Fitch,B,Stable,2016-04-01
+Ethiopia,Fitch,B,Stable,2016-07-01
+Ethiopia,Fitch,B,Stable,2016-10-01
+Ethiopia,Fitch,B,Stable,2017-06-01
+Ethiopia,Fitch,B,Stable,2017-12-01
+Ethiopia,Fitch,B,Stable,2018-07-01
+Ethiopia,Fitch,B,Negative,2019-10-01
+Ethiopia,Fitch,CCC,Developing,2021-02-01
+Ethiopia,Fitch,CCC,NR,2022-01-01
+Ethiopia,Fitch,C,NR,2023-12-01
+Ethiopia,Fitch,RD,NR,2025-10-01
+Ethiopia,Moody's,B1,Stable,2014-05-01
+Ethiopia,Moody's,B1,Stable,2016-12-01
+Ethiopia,Moody's,B1,Stable,2018-02-01
+Ethiopia,Moody's,B1,Negative,2019-09-01
+Ethiopia,Moody's,B1,Negative,2020-08-01
+Ethiopia,Moody's,Ba2,Stable,2021-03-01
+Ethiopia,Moody's,B2,Under Review,2021-03-01
+Ethiopia,Moody's,Caa1,Under Review,2021-05-01
+Ethiopia,Moody's,Caa2,Negative,2021-10-01
+Ethiopia,Moody's,Caa2,Negative,2021-10-01
+Ethiopia,Moody's,Caa3,Stable,2023-09-01
+Ethiopia,Moody's,Caa3,Stable,2026-02-01
+Ethiopia,S&P,B,Stable,2014-05-01
+Ethiopia,S&P,B,Negative,2020-04-01
+Ethiopia,S&P,B,Negative,2020-04-01
+Ethiopia,S&P,CCC,Negative,2021-11-01

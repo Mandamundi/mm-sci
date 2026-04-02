@@ -1,0 +1,17 @@
+Country,Agency,Rating,Outlook,Date
+Laos,Fitch,B-,Stable,2020-02-01
+Laos,Fitch,B-,Stable,2020-02-01
+Laos,Fitch,B-,Negative,2020-05-01
+Laos,Fitch,CCC,NR,2020-09-01
+Laos,Fitch,CCC,NR,2021-08-01
+Laos,Fitch,CCC-,NR,2022-10-01
+Laos,Fitch,CCC+,NR,2025-10-01
+Laos,Fitch,CCC+,NR,2025-11-01
+Laos,Moody's,B3,Positive,2019-01-01
+Laos,Moody's,B3,Under Review,2020-06-01
+Laos,Moody's,Caa2,Negative,2020-08-01
+Laos,Moody's,Caa3,Stable,2022-06-01
+Laos,Moody's,Caa3,Stable,2024-02-01
+Laos,Moody's,Caa2,Stable,2025-12-01
+Laos,S&P,CCC+,Positive,2025-10-01
+Laos,S&P,CCC+,NR,2025-11-01

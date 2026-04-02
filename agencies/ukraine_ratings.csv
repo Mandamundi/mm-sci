@@ -1,0 +1,119 @@
+Country,Agency,Rating,Outlook,Date
+Ukraine,Fitch,B-,Stable,2001-06-01
+Ukraine,Fitch,B,Stable,2002-03-01
+Ukraine,Fitch,B+,Stable,2003-06-01
+Ukraine,Fitch,BB-,Stable,2005-01-01
+Ukraine,Fitch,BB-,Positive,2005-06-01
+Ukraine,Fitch,BB-,Stable,2006-01-01
+Ukraine,Fitch,BB-,Positive,2006-10-01
+Ukraine,Fitch,BB-,Stable,2008-05-01
+Ukraine,Fitch,BB-,Negative,2008-09-01
+Ukraine,Fitch,B+,Negative,2008-10-01
+Ukraine,Fitch,B,Negative,2009-02-01
+Ukraine,Fitch,B-,Negative,2009-11-01
+Ukraine,Fitch,B-,Stable,2010-03-01
+Ukraine,Fitch,B,Stable,2010-07-01
+Ukraine,Fitch,B,Positive,2011-07-01
+Ukraine,Fitch,B,Stable,2011-10-01
+Ukraine,Fitch,B,Stable,2012-04-01
+Ukraine,Fitch,B,Stable,2012-07-01
+Ukraine,Fitch,B,Stable,2012-08-01
+Ukraine,Fitch,B,Stable,2013-03-01
+Ukraine,Fitch,B,Stable,2013-05-01
+Ukraine,Fitch,B,Negative,2013-06-01
+Ukraine,Fitch,B,Negative,2013-07-01
+Ukraine,Fitch,B,Negative,2013-08-01
+Ukraine,Fitch,B,Negative,2013-09-01
+Ukraine,Fitch,B-,Negative,2013-11-01
+Ukraine,Fitch,B-,Negative,2013-12-01
+Ukraine,Fitch,B-,Negative,2014-01-01
+Ukraine,Fitch,B-,Stable,2016-11-01
+Ukraine,Fitch,B-,Stable,2017-04-01
+Ukraine,Fitch,B-,Stable,2017-10-01
+Ukraine,Fitch,B-,Stable,2018-04-01
+Ukraine,Fitch,B-,Stable,2019-03-01
+Ukraine,Fitch,B,Positive,2019-09-01
+Ukraine,Fitch,B,Positive,2020-03-01
+Ukraine,Fitch,B,Stable,2020-04-01
+Ukraine,Fitch,B,Stable,2020-04-01
+Ukraine,Fitch,B,Stable,2020-09-01
+Ukraine,Fitch,B,Stable,2021-02-01
+Ukraine,Fitch,B,Positive,2021-08-01
+Ukraine,Fitch,CCC,NR,2022-02-01
+Ukraine,Fitch,B,Stable,2022-02-01
+Ukraine,Fitch,C,NR,2022-07-01
+Ukraine,Fitch,CC,NR,2022-08-01
+Ukraine,Fitch,CC,NR,2023-01-01
+Ukraine,Fitch,CC,NR,2023-06-01
+Ukraine,Fitch,CC,Negative,2023-12-01
+Ukraine,Fitch,CC,NR,2024-06-01
+Ukraine,Fitch,C,NR,2024-07-01
+Ukraine,Fitch,RD,NR,2024-12-01
+Ukraine,Fitch,RD,NR,2025-05-01
+Ukraine,Fitch,RD,NR,2025-11-01
+Ukraine,Fitch,CCC,NR,2025-12-01
+Ukraine,Moody's,B2,Stable,1998-02-01
+Ukraine,Moody's,B2,Negative watch,1998-07-01
+Ukraine,Moody's,B3,Negative watch,1998-09-01
+Ukraine,Moody's,Caa1,Negative watch,2000-01-01
+Ukraine,Moody's,Caa1,Negative,2000-04-01
+Ukraine,Moody's,B2,Stable,2002-01-01
+Ukraine,Moody's,B2,Positive watch,2003-07-01
+Ukraine,Moody's,B1,Stable,2003-11-01
+Ukraine,Moody's,B1,Positive watch,2008-03-01
+Ukraine,Moody's,B1,Positive,2008-08-01
+Ukraine,Moody's,B1,Negative watch,2009-02-01
+Ukraine,Moody's,B2,Negative,2009-05-01
+Ukraine,Moody's,B3,Negative,2012-12-01
+Ukraine,Moody's,Caa1,Negative watch,2013-09-01
+Ukraine,Moody's,Caa2,Negative,2014-01-01
+Ukraine,Moody's,Caa3,Negative,2014-04-01
+Ukraine,Moody's,Ca,Negative,2015-03-01
+Ukraine,Moody's,Caa3,Stable,2015-11-01
+Ukraine,Moody's,Caa2,Positive,2017-08-01
+Ukraine,Moody's,Caa1,Stable,2018-12-01
+Ukraine,Moody's,Caa1,Stable,2019-01-01
+Ukraine,Moody's,Caa1,Positive,2019-11-01
+Ukraine,Moody's,Caa2,Negative watch,2022-03-01
+Ukraine,Moody's,Caa3,Negative,2022-05-01
+Ukraine,Moody's,Ca,Stable,2023-02-01
+Ukraine,Moody's,Ca,Stable,2025-05-01
+Ukraine,S&P,B,Stable,2001-12-01
+Ukraine,S&P,B,Negative,2002-11-01
+Ukraine,S&P,B,Stable,2003-05-01
+Ukraine,S&P,B,Positive,2003-10-01
+Ukraine,S&P,B+,Stable,2004-07-01
+Ukraine,S&P,BB-,Stable,2005-05-01
+Ukraine,S&P,BB-,Stable,2005-11-01
+Ukraine,S&P,BB-,Stable,2006-04-01
+Ukraine,S&P,BB-,Negative,2007-04-01
+Ukraine,S&P,B+,Stable,2008-06-01
+Ukraine,S&P,B,Negative,2008-10-01
+Ukraine,S&P,B+,Negative watch,2008-10-01
+Ukraine,S&P,CCC+,Negative,2009-02-01
+Ukraine,S&P,B,Negative watch,2009-02-01
+Ukraine,S&P,CCC+,Positive,2009-07-01
+Ukraine,S&P,CCC+,Stable,2009-10-01
+Ukraine,S&P,B-,Positive,2010-03-01
+Ukraine,S&P,B,Stable,2010-05-01
+Ukraine,S&P,B+,Stable,2010-07-01
+Ukraine,S&P,B,Positive watch,2010-07-01
+Ukraine,S&P,B+,Stable,2011-09-01
+Ukraine,S&P,B+,Negative,2012-03-01
+Ukraine,S&P,B,Negative,2012-12-01
+Ukraine,S&P,B-,Negative,2013-11-01
+Ukraine,S&P,B-,Stable,2013-12-01
+Ukraine,S&P,CCC+,Negative,2014-01-01
+Ukraine,S&P,CCC,Negative,2014-02-01
+Ukraine,S&P,CCC,Stable,2014-07-01
+Ukraine,S&P,CCC-,Negative,2014-12-01
+Ukraine,S&P,CC,Negative,2015-04-01
+Ukraine,S&P,B-,Stable,2015-10-01
+Ukraine,S&P,B-,Developing,2019-06-01
+Ukraine,S&P,NR,NR,2019-09-01
+Ukraine,S&P,B,Stable,2019-09-01
+Ukraine,S&P,B,Developing,2020-01-01
+Ukraine,S&P,B,Developing,2020-01-01
+Ukraine,S&P,B-,Negative watch,2022-02-01
+Ukraine,S&P,D,NR,2025-05-01
+Ukraine,S&P,CCC+,NR,2026-01-01

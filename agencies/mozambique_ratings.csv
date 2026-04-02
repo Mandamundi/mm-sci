@@ -1,0 +1,49 @@
+Country,Agency,Rating,Outlook,Date
+Mozambique,Fitch,B,Stable,2003-07-01
+Mozambique,Fitch,B,Stable,2011-08-01
+Mozambique,Fitch,AA-,Stable,2013-05-01
+Mozambique,Fitch,B+,Stable,2013-07-01
+Mozambique,Fitch,B+,Stable,2013-11-01
+Mozambique,Fitch,AA-,Stable,2014-05-01
+Mozambique,Fitch,B+,Stable,2014-11-01
+Mozambique,Fitch,B,Negative,2016-03-01
+Mozambique,Fitch,RD,Developing,2019-05-01
+Mozambique,Fitch,CCC,Developing,2019-11-01
+Mozambique,Fitch,CC,Developing,2020-04-01
+Mozambique,Fitch,CCC,Under Review,2020-07-01
+Mozambique,Fitch,CCC,Developing,2020-12-01
+Mozambique,Fitch,CCC,NR,2021-07-01
+Mozambique,Fitch,CCC,NR,2022-03-01
+Mozambique,Fitch,CCC+,NR,2022-09-01
+Mozambique,Fitch,CCC+,NR,2023-02-01
+Mozambique,Fitch,CCC+,NR,2023-08-01
+Mozambique,Fitch,CCC+,NR,2024-02-01
+Mozambique,Fitch,CCC+,NR,2024-08-01
+Mozambique,Fitch,CCC,NR,2025-02-01
+Mozambique,Fitch,CCC,NR,2025-08-01
+Mozambique,Fitch,CCC,NR,2026-01-01
+Mozambique,Moody's,B1,Stable,2013-09-01
+Mozambique,Moody's,B2,Negative,2015-08-01
+Mozambique,Moody's,B2,Negative watch,2015-12-01
+Mozambique,Moody's,B3,Negative watch,2016-03-01
+Mozambique,Moody's,Caa1,Stable,2016-04-01
+Mozambique,Moody's,Caa1,Negative watch,2016-05-01
+Mozambique,Moody's,Caa3,Negative,2016-07-01
+Mozambique,Moody's,Caa2,Stable,2019-09-01
+Mozambique,Moody's,Caa2,Positive,2022-03-01
+Mozambique,Moody's,Caa2,Stable,2023-09-01
+Mozambique,S&P,B,Positive,2004-07-01
+Mozambique,S&P,B,Positive,2005-11-01
+Mozambique,S&P,B,Positive,2006-04-01
+Mozambique,S&P,B+,Stable,2007-12-01
+Mozambique,S&P,B+,Negative,2013-08-01
+Mozambique,S&P,B,Stable,2014-02-01
+Mozambique,S&P,B,Stable,2014-08-01
+Mozambique,S&P,B-,Negative watch,2015-07-01
+Mozambique,S&P,B-,Negative,2015-09-01
+Mozambique,S&P,CC,Negative,2016-03-01
+Mozambique,S&P,B-,Stable,2016-04-01
+Mozambique,S&P,CCC,Negative watch,2016-05-01
+Mozambique,S&P,CCC,Negative,2016-08-01
+Mozambique,S&P,CC,Negative,2016-11-01
+Mozambique,S&P,CCC+,Stable,2019-11-01
