@@ -36,7 +36,7 @@ warnings.filterwarnings("ignore")
 
 AGENCIES_DIR = "agencies"
 CDS_DIR      = "cds"
-DATA_DIR     = "data"
+DATA_DIR     = "public/data"
 
 # CDS series that are discontinued and should be excluded from the regression
 # but their SCI is still computed normally

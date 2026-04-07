@@ -197,11 +197,11 @@ def main():
                 
         browser.close()
 
-    if all_frames:
-        combined = pd.concat(all_frames, ignore_index=True)
-        combined.to_csv(OUT_DIR / "all_ratings.csv", index=False)
-        log.info("\n✓  Saved %d rows across %d countries → %s/",
-                 len(combined), len(all_frames), OUT_DIR)
+    # if all_frames:
+    #     combined = pd.concat(all_frames, ignore_index=True)
+    #     combined.to_csv(OUT_DIR / "all_ratings.csv", index=False)
+    #     log.info("\n✓  Saved %d rows across %d countries → %s/",
+    #              len(combined), len(all_frames), OUT_DIR)
 
     if failed:
         log.warning("\n⚠  Failed / empty (%d): %s", len(failed), failed)
