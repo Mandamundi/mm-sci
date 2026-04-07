@@ -1,4 +1,5 @@
 import { useTheme } from 'next-themes';
+import { startTransition } from 'react';
 
 export function useDarkMode() {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -6,7 +7,9 @@ export function useDarkMode() {
   const isDark = resolvedTheme === 'dark';
   
   const toggle = () => {
-    setTheme(isDark ? 'light' : 'dark');
+    startTransition(() => {
+      setTheme(isDark ? 'light' : 'dark');
+    });
   };
 
   return { isDark, toggle, theme, setTheme };
