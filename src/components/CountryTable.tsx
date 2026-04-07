@@ -12,34 +12,75 @@ interface CountryTableProps {
 export function CountryTable({ sciData, marketData, onSelectCountry }: CountryTableProps) {
   const [metric, setMetric] = useState<'SCI (monthly)' | 'Market-implied (weekly)'>('SCI (monthly)');
 
-  const { countries, dates, data } = useMemo(() => {
+  const { countries, dates } = useMemo(() => {
     const isSci = metric === 'SCI (monthly)';
-    const sourceData = isSci ? sciData : marketData;
-    
-    const countries = Object.keys(sourceData).sort();
-    
-    // Get all unique dates and take the last 15
+
+    // Always use the full SCI country list — sciData has all 116 countries.
+    // When market-implied is selected, countries without CDS data just show nulls.
+    const countries = Object.keys(sciData).sort();
+
+    // Collect dates from the active source, but only from countries that
+    // actually have data for the selected metric.
     const allDates = new Set<string>();
-    countries.forEach(c => {
-      sourceData[c].dates.forEach(d => allDates.add(d));
-    });
-    
+
+    if (isSci) {
+      countries.forEach(c => {
+        sciData[c]?.dates.forEach(d => allDates.add(d));
+      });
+    } else {
+      // Only pull dates from marketData — these are the weekly dates.
+      // Countries absent from marketData will just render null cells.
+      Object.values(marketData).forEach(entry => {
+        entry.dates.forEach(d => allDates.add(d));
+      });
+    }
+
     const sortedDates = Array.from(allDates).sort().slice(-15);
-    
-    return { countries, dates: sortedDates, data: sourceData };
+    return { countries, dates: sortedDates };
   }, [sciData, marketData, metric]);
+
+  const getValue = (country: string, date: string): number | null => {
+    if (metric === 'SCI (monthly)') {
+      const entry = sciData[country];
+      if (!entry) return null;
+      const idx = entry.dates.indexOf(date);
+      return idx !== -1 ? entry.sci[idx] : null;
+    } else {
+      // Country may not have market data — return null gracefully
+      const entry = marketData[country];
+      if (!entry) return null;
+      const idx = entry.dates.indexOf(date);
+      return idx !== -1 ? entry.market_implied[idx] : null;
+    }
+  };
+
+  // Format column header depending on metric frequency
+  const formatDate = (date: string): string => {
+    if (metric === 'SCI (monthly)') {
+      // e.g. "2024-03-31" → "Mar 24"
+      const d = new Date(date);
+      return d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+    } else {
+      // e.g. "2024-03-31" → "Mar 31"
+      const d = new Date(date);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+  };
 
   return (
     <div className="bg-white dark:bg-[#16181c] rounded-xl border border-gray-200 dark:border-[#2a2d35] shadow-sm overflow-hidden flex flex-col">
       <div className="p-4 border-b border-gray-200 dark:border-[#2a2d35] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-lg font-medium text-gray-900 dark:text-white">MM Sovereign Credit Index — All Countries</h2>
+        <h2 className="text-lg font-medium text-gray-900 dark:text-white">
+          MM Sovereign Credit Index — All Countries
+        </h2>
         <PillToggle
+          layoutId="table-metric-toggle"
           options={['SCI (monthly)', 'Market-implied (weekly)']}
           selected={metric}
-          onChange={setMetric}
+          onChange={(v) => setMetric(v as 'SCI (monthly)' | 'Market-implied (weekly)')}
         />
       </div>
-      
+
       <div className="overflow-x-auto overflow-y-auto max-h-[420px] custom-scrollbar">
         <table className="w-full text-sm text-left border-collapse">
           <thead className="text-xs text-gray-500 dark:text-[#6b7280] bg-gray-50 dark:bg-[#0e0f11] sticky top-0 z-20">
@@ -48,38 +89,32 @@ export function CountryTable({ sciData, marketData, onSelectCountry }: CountryTa
                 Country
               </th>
               {dates.map(date => (
-                <th key={date} className="px-2 py-3 font-medium text-center border-b border-gray-200 dark:border-[#2a2d35] min-w-[60px]">
-                  {date.substring(5)} {/* MM-DD */}
+                <th
+                  key={date}
+                  className="px-2 py-3 font-medium text-center border-b border-gray-200 dark:border-[#2a2d35] min-w-[60px]"
+                >
+                  {formatDate(date)}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {countries.map(country => {
-              // Find flag from somewhere, or just use a generic one if not available.
-              // We can pass a flag map or just use the name.
-              // For now, we'll just show the name.
-              return (
-                <tr 
-                  key={country} 
-                  onClick={() => onSelectCountry(country)}
-                  className="border-b border-gray-100 dark:border-[#1e2025] hover:bg-gray-50 dark:hover:bg-[#1e2025] cursor-pointer transition-colors"
-                >
-                  <td className="px-4 py-2 font-medium text-gray-900 dark:text-gray-100 sticky left-0 bg-white dark:bg-[#16181c] z-10 border-r border-gray-100 dark:border-[#1e2025] group-hover:bg-gray-50 dark:group-hover:bg-[#1e2025]">
-                    {country}
+            {countries.map(country => (
+              <tr
+                key={country}
+                onClick={() => onSelectCountry(country)}
+                className="border-b border-gray-100 dark:border-[#1e2025] hover:bg-gray-50 dark:hover:bg-[#1e2025] cursor-pointer transition-colors"
+              >
+                <td className="px-4 py-2 font-medium text-gray-900 dark:text-gray-100 sticky left-0 bg-white dark:bg-[#16181c] z-10 border-r border-gray-100 dark:border-[#1e2025]">
+                  {country}
+                </td>
+                {dates.map(date => (
+                  <td key={date} className="px-1 py-1">
+                    <ScoreCell score={getValue(country, date)} />
                   </td>
-                  {dates.map(date => {
-                    const idx = data[country].dates.indexOf(date);
-                    const val = idx !== -1 ? (metric === 'SCI (monthly)' ? (data[country] as any).sci[idx] : (data[country] as any).market_implied[idx]) : null;
-                    return (
-                      <td key={date} className="px-1 py-1">
-                        <ScoreCell score={val} />
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

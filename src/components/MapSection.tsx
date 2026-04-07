@@ -50,6 +50,7 @@ export function MapSection({ snapshot }: MapSectionProps) {
         <h2 className="text-lg font-medium text-gray-900 dark:text-white">World Credit Ratings</h2>
         <div className="flex items-center gap-4">
           <PillToggle
+            layoutId="map-metric-toggle"
             options={['SCI', 'Market-implied SCI', 'Spread']}
             selected={metric}
             onChange={setMetric}
