@@ -13,15 +13,15 @@ export function Navbar({ lastUpdated }: { lastUpdated?: string }) {
         <img 
           src="/favicon.svg" 
           alt="MM Logo" 
-          className="w-6 h-6 object-contain" 
+          className="w-8 h-8 object-contain" 
         />
         
         {/* Remember: If your SVG already has the letters "MM" in it, 
             you can delete this next line! */}
-        <span className="text-[#dff3ef] font-bold text-lg tracking-tight">MM</span>
+        <span className="text-[#dff3ef] font-bold text-lg">MM</span>
         
         <span className="text-gray-900 dark:text-white font-medium hidden sm:inline">
-          MM Sovereign Credit Index
+          Sovereign Credit Index
         </span>
       </div>
       
