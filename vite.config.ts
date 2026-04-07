@@ -15,10 +15,13 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    optimizeDeps: {
+      include: ['react-is', 'recharts'],
+    },
     build: {
       rollupOptions: {
         onwarn(warning, warn) {
-          if (warning.code === 'UNRESOLVED_IMPORT') return;
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
           warn(warning);
         },
       },
