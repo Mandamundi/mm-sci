@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <path d="M 115 500 
+           C 105 500 100 495 100 485 
+           A 400 400 0 0 1 900 485 
+           C 900 495 895 500 885 500 
+           Z" 
+        fill="#E2F4F2" />
+  
+  <path d="M 180 500 
+           A 320 320 0 0 1 310 243 
+           L 500 500 
+           L 690 243 
+           A 320 320 0 0 1 820 500 
+           Z" 
+        fill="#7CDBC0" />
+  
+  <circle cx="500" cy="500" r="60" fill="#E2F4F2" />
+  
+  <path d="M 485 500 
+           L 493 220 
+           A 7 7 0 0 1 507 220 
+           L 515 500 
+           Z" 
+        fill="#E2F4F2" />
+
+    <!-- Central Gauge Needle -->
+  <path d="M 485 500 
+           L 493 220 
+           A 7 7 0 0 1 507 220 
+           L 515 500 
+           Z" 
+        fill="#b5e3dc" />
+  
+  <g stroke="#E2F4F2" stroke-width="22" stroke-linecap="round">
+    <line x1="500" y1="60" x2="500" y2="20" transform="rotate(-70 500 500)" />
+    <line x1="500" y1="60" x2="500" y2="20" transform="rotate(-40 500 500)" />
+    <line x1="500" y1="60" x2="500" y2="20" transform="rotate(-10 500 500)" />
+    <line x1="500" y1="60" x2="500" y2="20" transform="rotate(10 500 500)" />
+    <line x1="500" y1="60" x2="500" y2="20" transform="rotate(40 500 500)" />
+    <line x1="500" y1="60" x2="500" y2="20" transform="rotate(70 500 500)" />
+  </g>
+</svg>
