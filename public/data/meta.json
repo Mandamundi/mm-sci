@@ -1,14 +1,1 @@
-{
-  "last_updated": "2026-04-02T06:52:20.209Z",
-  "n_countries_sci": 12,
-  "n_countries_market": 6,
-  "regression": {
-    "slope": 0.85,
-    "r2_within": 0.9,
-    "r2_overall": 0.88,
-    "intercepts": {
-      "United States": 1.2,
-      "Germany": 0.5
-    }
-  }
-}
+{"last_updated":"2026-04-07T07:07:35Z","n_countries_sci":116,"n_countries_market":21,"regression":{"slope":-4.1691,"r2_within":0.1987,"r2_overall":0.9733,"intercepts":{"Australia":111.97152265277145,"Austria":107.92062001744816,"Belgium":99.87143688375251,"Brazil":67.90880395291532,"Canada":113.23274799895668,"China":98.05206628620651,"Denmark":111.4428037490029,"Egypt":53.004661475107866,"Finland":108.34594296261014,"France":103.93446294009829,"Germany":111.50206388142317,"Indonesia":76.50827332376498,"Ireland":93.17230979143518,"Italy":78.86084622601692,"Japan":92.88989215649255,"Mexico":82.36717586302336,"Netherlands":111.56640939413313,"Portugal":75.61736391427839,"Spain":84.10906459871242,"Sweden":111.41607985640907,"Turkey":63.992905917316016}}}
