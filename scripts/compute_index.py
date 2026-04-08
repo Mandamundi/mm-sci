@@ -98,6 +98,38 @@ RATING_HIERARCHY = [
     ("Speculative Grade","In Default",           "D•NR","D•NR", "D•NR"),
 ]
 
+CDS_NAME_OVERRIDES: dict = {
+    "us":            "United States",
+    "uk":            "United Kingdom",
+    "south-korea":   "South Korea",   # in case filename uses hyphen
+    "south_korea":   "South Korea",
+    "saudi-arabia":  "Saudi Arabia",
+    "saudi_arabia":  "Saudi Arabia",
+    "czech-republic":"Czechia",
+    "ivory-coast":   "Ivory Coast",
+    "ivory_coast":   "Ivory Coast",
+    "new-zealand":   "New Zealand",
+    "new_zealand":   "New Zealand",
+    "hong-kong":     "Hong Kong",
+    "hong_kong":     "Hong Kong",
+    "south-africa":  "South Africa",
+    "south_africa":  "South Africa",
+    "costa-rica":    "Costa Rica",
+    "costa_rica":    "Costa Rica",
+    "el-salvador":   "El Salvador",
+    "el_salvador":   "El Salvador",
+    "sri-lanka":     "Sri Lanka",
+    "sri_lanka":     "Sri Lanka",
+    "dominican-republic": "Dominican Republic",
+    "dominican_republic": "Dominican Republic",
+    "papua-new-guinea":   "Papua New Guinea",
+    "papua_new_guinea":   "Papua New Guinea",
+}
+
+AGENCY_NAME_OVERRIDES: dict = {
+    "Usa": "United States",
+}
+
 # ══════════════════════════════════════════════════════════════════════════════
 # SECTION 2 — HELPERS
 # ══════════════════════════════════════════════════════════════════════════════
@@ -140,13 +172,19 @@ def get_outlook_adj(outlook: str) -> float:
 def country_from_agency_path(path: str) -> str:
     stem = os.path.splitext(os.path.basename(path))[0]
     stem = re.sub(r"[_\-]ratings?$", "", stem, flags=re.IGNORECASE)
-    return stem.replace("_", " ").title()
-
-
+    name = stem.replace("_", " ").title()
+    return AGENCY_NAME_OVERRIDES.get(name, name)
+ 
+ 
 def country_from_cds_path(path: str) -> str:
     stem = os.path.splitext(os.path.basename(path))[0]
     stem = re.sub(r"^mm[_\-]", "", stem, flags=re.IGNORECASE)
     stem = re.sub(r"[_\-]5\s*year[_\-]cds.*$", "", stem, flags=re.IGNORECASE)
+    raw = stem.strip().lower()
+    # Check override table first (handles us, uk, and any other short codes)
+    if raw in CDS_NAME_OVERRIDES:
+        return CDS_NAME_OVERRIDES[raw]
+    # Fall back to title-casing with spaces
     return stem.replace("_", " ").replace("-", " ").strip().title()
 
 
