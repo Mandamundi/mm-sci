@@ -17,8 +17,8 @@ type Metric = 'SCI' | 'Market-implied SCI' | 'Spread';
 
 // world-atlas name → our compute_index.py country name (Title Case)
 const GEO_NAME_MAP: Record<string, string> = {
-  "United States of America": "Usa",
-  "United States":            "Usa",
+  "United States of America": "United States",
+  "United States":            "United States",
   "South Korea":              "South Korea",
   "Korea":                    "South Korea",
   "Republic of Korea":        "South Korea",
