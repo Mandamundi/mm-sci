@@ -45,39 +45,39 @@ const GEO_NAME_MAP: Record<string, string> = {
 function getSpreadColor(val: number, isDark: boolean): string {
   // Positive = agencies ahead of market (stress) → warm
   // Negative = market ahead of agencies (upgrade) → cool green
-  if (val > 15)  return isDark ? '#7f1d1d' : '#dc2626';
-  if (val > 8)   return isDark ? '#993c1d' : '#ea580c';
-  if (val > 3)   return isDark ? '#ba7517' : '#f59e0b';
-  if (val > -3)  return isDark ? '#2a2d35' : '#d1d5db'; // near-zero neutral
-  if (val > -8)  return isDark ? '#065f46' : '#6ee7b7';
-  if (val > -15) return isDark ? '#064e3b' : '#34d399';
-  return isDark ? '#022c22' : '#10b981';
+  if (val > 15)  return isDark ? '#7f1d1d' : '#b91c1c'; // Deep Red
+  if (val > 8)   return isDark ? '#993c1d' : '#ea580c'; // Burnt Orange
+  if (val > 3)   return isDark ? '#ba7517' : '#d97706'; // Amber
+  if (val > -3)  return isDark ? '#374151' : '#d1d5db'; // Muted Gray Neutral
+  if (val > -8)  return isDark ? '#065f46' : '#10b981'; // Mint/Emerald
+  if (val > -15) return isDark ? '#064e3b' : '#059669'; // Emerald
+  return isDark ? '#022c22' : '#047857';                // Deep Forest Green
 }
 
-const SCI_LEGEND_ITEMS = [
-  { label: 'D',   colorDark: '#7f1d1d', colorLight: '#fca5a5' },
-  { label: 'CCC', colorDark: '#991b1b', colorLight: '#f87171' },
-  { label: 'B',   colorDark: '#993c1d', colorLight: '#fb923c' },
-  { label: 'BB',  colorDark: '#854f0b', colorLight: '#fbbf24' },
-  { label: 'BBB', colorDark: '#ba7517', colorLight: '#fcd34d' },
-  { label: 'A',   colorDark: '#1d9e75', colorLight: '#34d399' },
-  { label: 'AA',  colorDark: '#0f6e56', colorLight: '#10b981' },
-  { label: 'AAA', colorDark: '#085041', colorLight: '#059669' },
+const SCI_LEGEND_ITEMS =[
+  { label: 'D',   colorDark: '#7f1d1d', colorLight: '#b91c1c' },
+  { label: 'CCC', colorDark: '#991b1b', colorLight: '#dc2626' },
+  { label: 'B',   colorDark: '#993c1d', colorLight: '#ea580c' },
+  { label: 'BB',  colorDark: '#854f0b', colorLight: '#d97706' },
+  { label: 'BBB', colorDark: '#ba7517', colorLight: '#ca8a04' },
+  { label: 'A',   colorDark: '#1d9e75', colorLight: '#65a30d' },
+  { label: 'AA',  colorDark: '#0f6e56', colorLight: '#16a34a' },
+  { label: 'AAA', colorDark: '#085041', colorLight: '#15803d' },
 ];
 
-const SPREAD_LEGEND_ITEMS = [
-  { label: '+15+', colorDark: '#7f1d1d', colorLight: '#dc2626' },
+const SPREAD_LEGEND_ITEMS =[
+  { label: '+15+', colorDark: '#7f1d1d', colorLight: '#b91c1c' },
   { label: '+8',   colorDark: '#993c1d', colorLight: '#ea580c' },
-  { label: '+3',   colorDark: '#ba7517', colorLight: '#f59e0b' },
-  { label: '≈0',   colorDark: '#2a2d35', colorLight: '#d1d5db' },
-  { label: '−3',   colorDark: '#065f46', colorLight: '#6ee7b7' },
-  { label: '−8',   colorDark: '#064e3b', colorLight: '#34d399' },
-  { label: '−15+', colorDark: '#022c22', colorLight: '#10b981' },
+  { label: '+3',   colorDark: '#ba7517', colorLight: '#d97706' },
+  { label: '≈0',   colorDark: '#374151', colorLight: '#d1d5db' },
+  { label: '−3',   colorDark: '#065f46', colorLight: '#10b981' },
+  { label: '−8',   colorDark: '#064e3b', colorLight: '#059669' },
+  { label: '−15+', colorDark: '#022c22', colorLight: '#047857' },
 ];
 
 export function MapSection({ snapshot }: MapSectionProps) {
   const [metric, setMetric] = useState<Metric>('SCI');
-  const [position, setPosition] = useState({ coordinates: [0, 20] as [number, number], zoom: 1 });
+  const [position, setPosition] = useState({ coordinates: [0, 20] as[number, number], zoom: 1 });
   const [tooltip, setTooltip] = useState<{ content: string; x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { isDark } = useDarkMode();
@@ -92,9 +92,10 @@ export function MapSection({ snapshot }: MapSectionProps) {
     return map;
   }, [snapshot]);
 
-  const noDataFill  = isDark ? '#1e2228' : '#e2e8f0';
-  const strokeColor = isDark ? '#0e0f11' : '#ffffff';
-  const mapBg       = isDark ? '#0e0f11' : '#dde8f0';
+  // Smoother background/line contrast profiles
+  const mapBg       = isDark ? '#1f2937' : '#f1f5f9'; // Lighter dark-mode gray, neutral light-mode slate
+  const noDataFill  = isDark ? '#374151' : '#e2e8f0'; 
+  const strokeColor = isDark ? '#111827' : '#ffffff'; 
 
   const legendItems = metric === 'Spread' ? SPREAD_LEGEND_ITEMS : SCI_LEGEND_ITEMS;
 
