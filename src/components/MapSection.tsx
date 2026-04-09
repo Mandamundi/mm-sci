@@ -69,7 +69,7 @@ const SPREAD_LEGEND_ITEMS =[
   { label: '+15+', colorDark: '#7f1d1d', colorLight: '#b91c1c' },
   { label: '+8',   colorDark: '#993c1d', colorLight: '#ea580c' },
   { label: '+3',   colorDark: '#ba7517', colorLight: '#d97706' },
-  { label: '≈0',   colorDark: '#374151', colorLight: '#d1d5db' },
+  { label: '≈0',   colorDark: '#355486', colorLight: '#80a8e4' },
   { label: '−3',   colorDark: '#065f46', colorLight: '#10b981' },
   { label: '−8',   colorDark: '#064e3b', colorLight: '#059669' },
   { label: '−15+', colorDark: '#022c22', colorLight: '#047857' },
