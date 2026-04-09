@@ -1,5 +1,4 @@
 export function getScoreColor(score: number | null, isDark: boolean) {
-  // Synced null/no-data colors with the map's new background palette
   if (score === null) return isDark ? { fill: '#374151', text: '#9ca3af' } : { fill: '#e2e8f0', text: '#6b7280' };
 
   // AAA
@@ -15,7 +14,10 @@ export function getScoreColor(score: number | null, isDark: boolean) {
   // B
   if (score >= 30) return isDark ? { fill: '#993c1d', text: '#f0997b' } : { fill: '#ea580c', text: '#ffffff' };
   
-  // CCC / D
-  // (Also slightly tweaked the dark mode fill here to #991b1b to perfectly match the legend)
-  return isDark ? { fill: '#991b1b', text: '#f7c1c1' } : { fill: '#dc2626', text: '#ffffff' };
+  // CCC (Added a new threshold here, e.g., >= 15)
+  if (score >= 15) return isDark ? { fill: '#991b1b', text: '#f7c1c1' } : { fill: '#dc2626', text: '#ffffff' };
+
+  // D (Anything below the CCC threshold)
+  // This uses the darkest red from your SCI_LEGEND_ITEMS
+  return isDark ? { fill: '#7f1d1d', text: '#fca5a5' } : { fill: '#b91c1c', text: '#ffffff' };
 }

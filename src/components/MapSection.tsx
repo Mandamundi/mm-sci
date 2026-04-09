@@ -48,7 +48,7 @@ function getSpreadColor(val: number, isDark: boolean): string {
   if (val > 15)  return isDark ? '#7f1d1d' : '#b91c1c'; // Deep Red
   if (val > 8)   return isDark ? '#993c1d' : '#ea580c'; // Burnt Orange
   if (val > 3)   return isDark ? '#ba7517' : '#d97706'; // Amber
-  if (val > -3)  return isDark ? '#374151' : '#d1d5db'; // Muted Gray Neutral
+  if (val > -3)  return isDark ? '#355486' : '#80a8e4'; // Muted Gray Neutral
   if (val > -8)  return isDark ? '#065f46' : '#10b981'; // Mint/Emerald
   if (val > -15) return isDark ? '#064e3b' : '#059669'; // Emerald
   return isDark ? '#022c22' : '#047857';                // Deep Forest Green
