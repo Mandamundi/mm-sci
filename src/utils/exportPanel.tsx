@@ -54,7 +54,7 @@ export const SIZES = [
   { label: '800 × 800  (1:1)',  w: 800,  h: 800  },
 ] as const;
 
-const FONT = 'Inter, -apple-system, system-ui, sans-serif';
+const FONT = 'Lato, Inter, -apple-system, system-ui, sans-serif';
 
 // 8-colour palette for multi-country lines (matches dashboard chip colours)
 const LINE_PALETTE = [
@@ -323,7 +323,7 @@ function drawLegend(
   w:       number,
   bottomY: number,   // top of legend block
 ): number {
-  const fontSize  = 11;
+  const fontSize  = 13;
   const rowH      = fontSize + 10;
   const swatchW   = 22;
   const swatchGap = 6;
@@ -398,23 +398,30 @@ export async function drawMapExport(
   watermarkImg: HTMLImageElement | null,
 ): Promise<void> {
   const ctx = setupCanvas(canvas, w, h);
-  drawBackground(ctx, w, h);
 
-  // Title band
+  // ── Background: blue canvas, white title band only ─────────────────────────
+  ctx.fillStyle = '#cce5f0';
+  ctx.fillRect(0, 0, w, h);
+
+  const _titleSize    = Math.round(w / 40);
+  const _subtitleSize = Math.round(w / 62);
+  const titleBandH    = _titleSize + _subtitleSize + 28;  // mirrors drawTitleBand arithmetic
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, w, titleBandH);
+  // ──────────────────────────────────────────────────────────────────────────
+
+  // Title band (draws text on top of the white rect)
   const titleH = drawTitleBand(ctx, w, title);
 
   // ── Serialize SVG ──────────────────────────────────────────────────────────
-  // Clone so we can mutate without affecting the DOM
   const clone = svgElement.cloneNode(true) as SVGSVGElement;
 
-  // Force white ocean background on the clone
   const oceanRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
   oceanRect.setAttribute('width',  '100%');
   oceanRect.setAttribute('height', '100%');
-  oceanRect.setAttribute('fill',   '#cce5f0'); // light blue ocean
+  oceanRect.setAttribute('fill',   '#cce5f0');
   clone.insertBefore(oceanRect, clone.firstChild);
 
-  // Embed all <style> from document so path fills render correctly
   const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
   styleEl.textContent = Array.from(document.styleSheets)
     .flatMap(s => { try { return Array.from(s.cssRules).map(r => r.cssText); } catch { return []; } })
@@ -428,14 +435,13 @@ export async function drawMapExport(
   const mapImg = await loadImage(svgUrl);
   URL.revokeObjectURL(svgUrl);
 
-  // Map area: below title band, above legend band
+  // ── Map area ───────────────────────────────────────────────────────────────
   const legendBandH = 60;
   const mapTop      = titleH;
   const mapH        = h - titleH - legendBandH;
   const mapW        = w;
 
-  // Letterbox: preserve aspect ratio of original SVG
-  const svgAR  = svgElement.viewBox?.baseVal?.width
+  const svgAR = svgElement.viewBox?.baseVal?.width
     ? svgElement.viewBox.baseVal.width / svgElement.viewBox.baseVal.height
     : mapW / mapH;
   let drawW = mapW;
@@ -446,16 +452,15 @@ export async function drawMapExport(
 
   ctx.drawImage(mapImg, drawX, drawY, drawW, drawH);
 
-  // Watermark centred on map area
   if (watermarkImg) {
     drawWatermark(ctx, watermarkImg, drawX, drawY, drawW, drawH);
   }
 
   // ── Colour legend bar ──────────────────────────────────────────────────────
-  const legendY    = h - legendBandH + 10;
-  const barH       = 12;
-  const barW       = Math.min(500, w * 0.6);
-  const barX       = (w - barW) / 2;
+  const legendY = h - legendBandH + 10;
+  const barH    = 12;
+  const barW    = Math.min(500, w * 0.6);
+  const barX    = (w - barW) / 2;
 
   const stops: Array<[number, string, string]> = [
     [0,   '#791f1f', 'D'],
@@ -492,7 +497,7 @@ export async function drawMapExport(
   ctx.fillText('Speculative Grade', igX - 4, legendY - 14);
   ctx.textAlign = 'left';
   ctx.fillText('Investment Grade', igX + 4, legendY - 14);
-  // divider tick
+  // Divider tick
   ctx.strokeStyle = '#aaaaaa';
   ctx.lineWidth   = 1;
   ctx.beginPath();
