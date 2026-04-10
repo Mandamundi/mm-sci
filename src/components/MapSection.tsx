@@ -8,8 +8,7 @@ import { Plus, Minus } from 'lucide-react';
 import { loadImage } from '../utils/image';
 import {
   ExportButton, drawMapExport,
-  ExportMetric, scoreToMapColor,
-  spreadToMapColor,
+  ExportMetric,
 } from '../utils/exportPanel';
 
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
@@ -179,37 +178,56 @@ export function MapSection({ snapshot }: MapSectionProps) {
           <ZoomableGroup zoom={position.zoom} center={position.coordinates} onMoveEnd={setPosition}>
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
-                geographies.map(geo => {
-                  const rawName = geo.properties.name as string;
-                  const mapped  = GEO_NAME_MAP[rawName] ?? rawName;
-                  const entry   = dataMap.get(mapped.toLowerCase());
+                geographies.map((geo) => {
+                  const rawName  = geo.properties.name as string;
+                  const resolved = GEO_NAME_MAP[rawName] ?? rawName;
+                  const d        = dataMap.get(resolved.toLowerCase());
 
-                  // ── Live UI fill — stays theme-aware (isDark matters here) ───────────
-                  const liveScore =
-                    metric === 'SCI'                ? (entry?.sci_score           ?? null) :
-                    metric === 'Market-implied SCI' ? (entry?.market_implied_score ?? null) : null;
-                  const liveSpread = metric === 'Spread' ? (entry?.spread ?? null) : null;
+                  let val: number | null = null;
+                  if (d) {
+                    if (metric === 'SCI')                val = d.sci ?? null;
+                    if (metric === 'Market-implied SCI') val = d.market_implied ?? null;
+                    if (metric === 'Spread')             val = d.spread ?? null;
+                  }
 
-                  const liveFill = metric === 'Spread'
-                    ? getSpreadColor(liveSpread ?? 0, isDark)   // ← isDark ✓
-                    : getScoreColor(liveScore, isDark);           // ← isDark ✓
-
-                  // ── Export fill — canonical, never theme-aware ───────────────────────
-                  const exportFill = metric === 'Spread'
-                    ? spreadToMapColor(liveSpread)               // ← no isDark ✓
-                    : scoreToMapColor(liveScore);                // ← no isDark ✓
+                  const fill =
+                    val === null
+                      ? noDataFill
+                      : metric === 'Spread'
+                        ? getSpreadColor(val, isDark)
+                        : getScoreColor(val, isDark).fill;
 
                   return (
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      data-export-fill={entry ? exportFill : '#d1d5db'}  // export only
+                      fill={fill}
+                      stroke={strokeColor}
+                      strokeWidth={0.4}
                       style={{
-                        default:  { fill: entry ? liveFill : noDataFill, outline: 'none', stroke: strokeColor, strokeWidth: 0.5 },
-                        hover:    { fill: '#94a3b8', outline: 'none', cursor: 'pointer' },
-                        pressed:  { fill: '#64748b', outline: 'none' },
+                        default: { outline: 'none' },
+                        hover:   { outline: 'none', filter: 'brightness(1.25)', cursor: 'pointer' },
+                        pressed: { outline: 'none' },
                       }}
-                      onMouseEnter={(evt) => { /* your tooltip logic */ }}
+                      onMouseEnter={(e: React.MouseEvent) => {
+                        const rect = containerRef.current?.getBoundingClientRect();
+                        const x = rect ? e.clientX - rect.left : 0;
+                        const y = rect ? e.clientY - rect.top  : 0;
+                        let content: string;
+                        if (d) {
+                          const fmt = (v: number | null | undefined) =>
+                            v != null ? v.toFixed(1) : '—';
+                          if (metric === 'SCI')
+                            content = `${d.country}  ·  SCI: ${fmt(d.sci)}`;
+                          else if (metric === 'Market-implied SCI')
+                            content = `${d.country}  ·  Market-implied: ${fmt(d.market_implied)}`;
+                          else
+                            content = `${d.country}  ·  Spread: ${fmt(d.spread)}`;
+                        } else {
+                          content = `${rawName}: No data`;
+                        }
+                        setTooltip({ content, x, y });
+                      }}
                       onMouseLeave={() => setTooltip(null)}
                     />
                   );
