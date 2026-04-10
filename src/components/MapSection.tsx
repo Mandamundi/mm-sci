@@ -180,31 +180,30 @@ export function MapSection({ snapshot }: MapSectionProps) {
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map(geo => {
-                  const rawName   = geo.properties.name as string;
-                  const mapped    = GEO_NAME_MAP[rawName] ?? rawName;
-                  const entry     = dataMap.get(mapped.toLowerCase());
+                  const rawName = geo.properties.name as string;
+                  const mapped  = GEO_NAME_MAP[rawName] ?? rawName;
+                  const entry   = dataMap.get(mapped.toLowerCase());
 
-                  // ── Theme-aware colour for the live UI ──────────────────────────────
+                  // ── Live UI fill — stays theme-aware (isDark matters here) ───────────
                   const liveScore =
-                    metric === 'SCI'               ? (entry?.sci_score          ?? null) :
-                    metric === 'Market-implied SCI' ? (entry?.market_implied_score ?? null) :
-                                                      null;
+                    metric === 'SCI'                ? (entry?.sci_score           ?? null) :
+                    metric === 'Market-implied SCI' ? (entry?.market_implied_score ?? null) : null;
                   const liveSpread = metric === 'Spread' ? (entry?.spread ?? null) : null;
-                  const liveFill   = metric === 'Spread'
-                    ? getSpreadColor(liveSpread ?? 0, isDark)
-                    : getScoreColor(liveScore, isDark);
 
-                  // ── Canonical colour for export (always the same, no isDark) ────────
+                  const liveFill = metric === 'Spread'
+                    ? getSpreadColor(liveSpread ?? 0, isDark)   // ← isDark ✓
+                    : getScoreColor(liveScore, isDark);           // ← isDark ✓
+
+                  // ── Export fill — canonical, never theme-aware ───────────────────────
                   const exportFill = metric === 'Spread'
-                    ? spreadToMapColor(liveSpread)
-                    : scoreToMapColor(liveScore);
+                    ? spreadToMapColor(liveSpread)               // ← no isDark ✓
+                    : scoreToMapColor(liveScore);                // ← no isDark ✓
 
                   return (
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      // ✅ Stamp canonical colour as a data attribute; exportPanel reads it
-                      data-export-fill={entry ? exportFill : '#d1d5db'}
+                      data-export-fill={entry ? exportFill : '#d1d5db'}  // export only
                       style={{
                         default:  { fill: entry ? liveFill : noDataFill, outline: 'none', stroke: strokeColor, strokeWidth: 0.5 },
                         hover:    { fill: '#94a3b8', outline: 'none', cursor: 'pointer' },
