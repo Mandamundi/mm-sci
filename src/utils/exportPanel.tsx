@@ -108,6 +108,30 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
+function bakeComputedStyles(
+  clone:    SVGSVGElement,
+  original: SVGSVGElement,
+): void {
+  const SEL = 'path, circle, ellipse, polygon, polyline, rect, line, text';
+  const cloneEls = Array.from(clone.querySelectorAll<SVGElement>(SEL));
+  const origEls  = Array.from(original.querySelectorAll<SVGElement>(SEL));
+
+  cloneEls.forEach((el, i) => {
+    const orig = origEls[i];
+    if (!orig) return;
+    const cs = window.getComputedStyle(orig);
+
+    const fill = cs.fill;
+    if (fill && fill !== 'none') el.setAttribute('fill', fill);
+
+    const stroke = cs.stroke;
+    if (stroke && stroke !== 'none') el.setAttribute('stroke', stroke);
+
+    // Strip class names so no external stylesheet can re-theme the element
+    el.removeAttribute('class');
+  });
+}
+
 function setupCanvas(canvas: HTMLCanvasElement, w: number, h: number): CanvasRenderingContext2D {
   const dpr = 2;
   canvas.width        = w * dpr;
@@ -416,16 +440,23 @@ export async function drawMapExport(
   // ── Serialize SVG ──────────────────────────────────────────────────────────
   const clone = svgElement.cloneNode(true) as SVGSVGElement;
 
+  // Bake computed fill/stroke values BEFORE adding the ocean rect or serializing,
+  // so the live original's element order still matches the clone's element order.
+  bakeComputedStyles(clone, svgElement);
+
   const oceanRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
   oceanRect.setAttribute('width',  '100%');
   oceanRect.setAttribute('height', '100%');
   oceanRect.setAttribute('fill',   '#cce5f0');
   clone.insertBefore(oceanRect, clone.firstChild);
 
+  // Inject only a minimal style that locks color-scheme to light.
+  // Do NOT dump document.styleSheets — that bakes in dark/light-mode CSS.
   const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-  styleEl.textContent = Array.from(document.styleSheets)
-    .flatMap(s => { try { return Array.from(s.cssRules).map(r => r.cssText); } catch { return []; } })
-    .join('\n');
+  styleEl.textContent = `
+    :root { color-scheme: light !important; }
+    * { color-scheme: light !important; }
+  `;
   clone.insertBefore(styleEl, clone.firstChild);
 
   const svgStr  = new XMLSerializer().serializeToString(clone);
@@ -932,7 +963,6 @@ export function ExportButton({ draw, filename, label = 'Export' }: ExportButtonP
             fontSize: '9px', color: 'rgba(255,255,255,0.3)', fontStyle: 'italic',
             margin: '8px 0 12px', paddingLeft: '2px',
           }}>
-            White background · MM brand style
           </div>
 
           <button
