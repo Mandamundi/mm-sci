@@ -85,6 +85,7 @@ Egypt,Moody's,B3,Negative watch,2023-05-01
 Egypt,Moody's,Caa1,Negative,2024-01-01
 Egypt,Moody's,Caa1,Positive,2024-03-01
 Egypt,Moody's,Caa1,Positive,2025-02-01
+Egypt,Moody's,Caa1,Positive,2026-04-01
 Egypt,S&P,BBB-,Stable,1997-01-01
 Egypt,S&P,BBB-,Negative,2000-07-01
 Egypt,S&P,BBB-,Negative,2001-06-01
@@ -112,6 +113,6 @@ Egypt,S&P,B,NR,2019-03-01
 Egypt,S&P,B,Developing,2019-04-01
 Egypt,S&P,B,Developing,2019-11-01
 Egypt,S&P,B-,Stable,2023-10-01
-Egypt,S&P,B-,Stable,2025-04-01
 Egypt,S&P,B-,NR,2025-04-01
+Egypt,S&P,B-,Stable,2025-04-01
 Egypt,S&P,B,Stable,2025-10-01

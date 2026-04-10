@@ -28,10 +28,10 @@ Philippines,Fitch,BBB,Stable,2019-01-01
 Philippines,Fitch,BBB,Stable,2019-04-01
 Philippines,Fitch,BBB,Stable,2019-04-01
 Philippines,Fitch,BBB,Stable,2019-05-01
-Philippines,Fitch,BBB,Developing,2020-01-01
 Philippines,Fitch,BBB,Stable,2020-01-01
 Philippines,Fitch,BBB,Developing,2020-01-01
 Philippines,Fitch,BBB,Stable,2020-01-01
+Philippines,Fitch,BBB,Developing,2020-01-01
 Philippines,Fitch,BBB,Positive,2020-02-01
 Philippines,Fitch,BBB,Positive,2020-02-01
 Philippines,Fitch,BBB,Stable,2020-05-01
@@ -106,3 +106,4 @@ Philippines,S&P,BBB+,Developing,2020-01-01
 Philippines,S&P,BBB+,Developing,2020-01-01
 Philippines,S&P,NR,NR,2025-03-01
 Philippines,S&P,BBB+,NR,2026-01-01
+Philippines,S&P,BBB+,Stable,2026-04-01
