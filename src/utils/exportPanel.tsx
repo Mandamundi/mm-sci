@@ -80,8 +80,9 @@ const RATING_TICKS: Array<[number, string]> = [
 ];
 
 // Score → fill colour for map choropleth (light-mode palette)
-function scoreToMapColor(score: number | null): string {
-  if (score === null) return '#e0e0e0';
+// Make canonical colour functions public
+export function scoreToMapColor(score: number | null): string {
+  if (score === null) return '#d1d5db';   // neutral grey, visible on both bg
   if (score >= 90) return '#085041';
   if (score >= 75) return '#0f6e56';
   if (score >= 60) return '#1d9e75';
@@ -89,6 +90,17 @@ function scoreToMapColor(score: number | null): string {
   if (score >= 45) return '#854f0b';
   if (score >= 30) return '#993c1d';
   return '#791f1f';
+}
+
+export function spreadToMapColor(val: number | null): string {
+  if (val === null) return '#d1d5db';
+  if (val > 15)  return '#7f1d1d';
+  if (val > 8)   return '#993c1d';
+  if (val > 3)   return '#ba7517';
+  if (val > -3)  return '#355486';
+  if (val > -8)  return '#065f46';
+  if (val > -15) return '#064e3b';
+  return '#022c22';
 }
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
@@ -105,30 +117,6 @@ function loadImage(src: string): Promise<HTMLImageElement> {
     img.onload  = () => resolve(img);
     img.onerror = reject;
     img.src     = src;
-  });
-}
-
-function bakeComputedStyles(
-  clone:    SVGSVGElement,
-  original: SVGSVGElement,
-): void {
-  const SEL = 'path, circle, ellipse, polygon, polyline, rect, line, text';
-  const cloneEls = Array.from(clone.querySelectorAll<SVGElement>(SEL));
-  const origEls  = Array.from(original.querySelectorAll<SVGElement>(SEL));
-
-  cloneEls.forEach((el, i) => {
-    const orig = origEls[i];
-    if (!orig) return;
-    const cs = window.getComputedStyle(orig);
-
-    const fill = cs.fill;
-    if (fill && fill !== 'none') el.setAttribute('fill', fill);
-
-    const stroke = cs.stroke;
-    if (stroke && stroke !== 'none') el.setAttribute('stroke', stroke);
-
-    // Strip class names so no external stylesheet can re-theme the element
-    el.removeAttribute('class');
   });
 }
 
@@ -440,29 +428,35 @@ export async function drawMapExport(
   // ── Serialize SVG ──────────────────────────────────────────────────────────
   const clone = svgElement.cloneNode(true) as SVGSVGElement;
 
-  // Bake computed fill/stroke values BEFORE adding the ocean rect or serializing,
-  // so the live original's element order still matches the clone's element order.
-  bakeComputedStyles(clone, svgElement);
-
+  // 1. Inject ocean background as an SVG rect (the live ocean color comes from
+  //    a CSS/div behind the SVG — that context doesn't exist in a standalone file)
   const oceanRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
   oceanRect.setAttribute('width',  '100%');
   oceanRect.setAttribute('height', '100%');
   oceanRect.setAttribute('fill',   '#cce5f0');
   clone.insertBefore(oceanRect, clone.firstChild);
 
-  // Inject only a minimal style that locks color-scheme to light.
-  // Do NOT dump document.styleSheets — that bakes in dark/light-mode CSS.
-  const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-  styleEl.textContent = `
-    :root { color-scheme: light !important; }
-    * { color-scheme: light !important; }
-  `;
-  clone.insertBefore(styleEl, clone.firstChild);
+  // 2. Re-apply canonical export colours stored on each Geography path.
+  //    MapSection stamps data-export-fill with scoreToMapColor / spreadToMapColor
+  //    (never isDark-aware), so this always produces a theme-neutral result.
+  clone.querySelectorAll<SVGElement>('[data-export-fill]').forEach(el => {
+    const fill = el.getAttribute('data-export-fill')!;
+    el.setAttribute('fill', fill);   // SVG presentation attribute
+    el.style.fill = fill;            // inline style wins over any surviving rule
+    el.setAttribute('stroke', '#ffffff');
+    el.setAttribute('stroke-width', '0.5');
+  });
 
+  // 3. Strip all class attributes so no leftover Tailwind/dark-mode CSS can
+  //    re-apply after serialization (the old styleEl injection caused this bug).
+  clone.querySelectorAll('[class]').forEach(el => el.removeAttribute('class'));
+
+  // 4. Serialize DOM → string → in-memory file → temporary URL
   const svgStr  = new XMLSerializer().serializeToString(clone);
   const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
   const svgUrl  = URL.createObjectURL(svgBlob);
 
+  // 5. Let the browser rasterize the SVG into a bitmap, then release the URL
   const mapImg = await loadImage(svgUrl);
   URL.revokeObjectURL(svgUrl);
 
