@@ -1,11 +1,14 @@
 import { useState, useRef, useMemo } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { PillToggle } from './PillToggle';
-import { ExportButton } from './ExportButton';
 import { SnapshotJson } from '../types';
 import { getScoreColor } from '../utils/scoreColor';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { Plus, Minus } from 'lucide-react';
+import {
+  ExportButton, drawMapExport,
+  ExportMetric,
+} from '../utils/exportPanel';
 
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 
@@ -42,6 +45,12 @@ const GEO_NAME_MAP: Record<string, string> = {
   "Sri Lanka":                "Sri Lanka",
 };
 
+const MAP_TITLES: Record<ExportMetric, string> = {
+  sci:            'World - MM Sovereign Credit Index',
+  market_implied: 'World - MM Market-Implied Sovereign Credit Index',
+  spread:         'World - MM Sovereign Credit Index Spread',
+};
+
 function getSpreadColor(val: number, isDark: boolean): string {
   // Positive = agencies ahead of market (stress) → warm
   // Negative = market ahead of agencies (upgrade) → cool green
@@ -74,6 +83,49 @@ const SPREAD_LEGEND_ITEMS =[
   { label: '−8',   colorDark: '#064e3b', colorLight: '#059669' },
   { label: '−15+', colorDark: '#022c22', colorLight: '#047857' },
 ];
+
+export function MapSection({ snapshot, metric }: Props) {
+  const svgRef = useRef<SVGSVGElement>(null);
+ 
+  return (
+    <div className="relative">
+      // Export button in top-right of card header
+      <ExportButton
+        filename={`mm_sci_map_${metric}`}
+        draw={async (canvas, w, h) => {
+          if (!svgRef.current) return;
+          const watermarkImg = await loadImage('/watermark.png').catch(() => null);
+          await drawMapExport(
+            canvas,
+            svgRef.current,
+            metric,
+            MAP_TITLES[metric],
+            w, h,
+            watermarkImg,
+          );
+        }}
+      />
+ 
+      // Pass ref into ComposableMap via svgAttributes
+      <ComposableMap
+        ref={svgRef}                   // <-- react-simple-maps v3 accepts ref
+        projectionConfig={{ scale: 147 }}
+      >
+        <Geographies geography="/world-110m.json">
+          {({ geographies }) =>
+            geographies.map(geo => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                fill={scoreColor(snapshotMap[geo.properties.name]?.[metric] ?? null)}
+              />
+            ))
+          }
+        </Geographies>
+      </ComposableMap>
+    </div>
+  );
+}
 
 export function MapSection({ snapshot }: MapSectionProps) {
   const [metric, setMetric] = useState<Metric>('SCI');
