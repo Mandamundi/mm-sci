@@ -3,6 +3,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { motion, AnimatePresence } from 'framer-motion';
 import { PillToggle } from './PillToggle';
 import { ExportButton } from './ExportButton';
+import { drawMultiCountryExport, CountrySeries } from '../utils/exportPanel';
+import { loadImage } from '../utils/image';
 import { SciJson, MarketJson } from '../types';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { Search, X } from 'lucide-react';
@@ -157,7 +159,33 @@ export function TimeSeriesSection({ sciData, marketData }: TimeSeriesSectionProp
             selected={metric}
             onChange={handleMetricChange}
           />
-          <ExportButton targetRef={containerRef} filename="mm-sci-timeseries" />
+          <ExportButton 
+            filename={`mm-sci-timeseries`}
+            draw={async (canvas, w, h) => {
+              // 1. Convert your UI metric to the format the export expects
+              const exportMetric = metric === 'SCI' ? 'sci' : 'market_implied';
+              const title = exportMetric === 'sci' 
+                ? 'World - MM Sovereign Credit Index' 
+                : 'World - MM Market-Implied Sovereign Credit Index';
+
+              // 2. Build the data series required by the export function
+              const series: CountrySeries[] = selectedCountries.flatMap(country => {
+                if (metric === 'SCI') {
+                  const d = sciData[country];
+                  if (!d) return [];
+                  return [{ country, points: d.dates.map((date, i) => ({ date, value: d.sci[i] })) }];
+                } else {
+                  const d = marketData[country];
+                  if (!d) return [];
+                  return [{ country, points: d.dates.map((date, i) => ({ date, value: d.market_implied[i] })) }];
+                }
+              });
+
+              // 3. Draw the image
+              const watermarkImg = await loadImage('/watermark.png').catch(() => null);
+              await drawMultiCountryExport(canvas, series, title, w, h, watermarkImg);
+            }}
+          />
         </div>
 
         {/* ── Range selector ── */}

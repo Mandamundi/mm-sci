@@ -5,6 +5,7 @@ import { SnapshotJson } from '../types';
 import { getScoreColor } from '../utils/scoreColor';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { Plus, Minus } from 'lucide-react';
+import { loadImage } from '../utils/image';
 import {
   ExportButton, drawMapExport,
   ExportMetric,
@@ -84,54 +85,12 @@ const SPREAD_LEGEND_ITEMS =[
   { label: '−15+', colorDark: '#022c22', colorLight: '#047857' },
 ];
 
-export function MapSection({ snapshot, metric }: Props) {
-  const svgRef = useRef<SVGSVGElement>(null);
- 
-  return (
-    <div className="relative">
-      // Export button in top-right of card header
-      <ExportButton
-        filename={`mm_sci_map_${metric}`}
-        draw={async (canvas, w, h) => {
-          if (!svgRef.current) return;
-          const watermarkImg = await loadImage('/watermark.png').catch(() => null);
-          await drawMapExport(
-            canvas,
-            svgRef.current,
-            metric,
-            MAP_TITLES[metric],
-            w, h,
-            watermarkImg,
-          );
-        }}
-      />
- 
-      // Pass ref into ComposableMap via svgAttributes
-      <ComposableMap
-        ref={svgRef}                   // <-- react-simple-maps v3 accepts ref
-        projectionConfig={{ scale: 147 }}
-      >
-        <Geographies geography="/world-110m.json">
-          {({ geographies }) =>
-            geographies.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                fill={scoreColor(snapshotMap[geo.properties.name]?.[metric] ?? null)}
-              />
-            ))
-          }
-        </Geographies>
-      </ComposableMap>
-    </div>
-  );
-}
-
 export function MapSection({ snapshot }: MapSectionProps) {
   const [metric, setMetric] = useState<Metric>('SCI');
   const [position, setPosition] = useState({ coordinates: [0, 20] as[number, number], zoom: 1 });
   const [tooltip, setTooltip] = useState<{ content: string; x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   const { isDark } = useDarkMode();
 
   const handleZoomIn  = () => setPosition(p => ({ ...p, zoom: Math.min(p.zoom * 1.5, 4) }));
@@ -166,7 +125,26 @@ export function MapSection({ snapshot }: MapSectionProps) {
             selected={metric}
             onChange={(v) => setMetric(v as Metric)}
           />
-          <ExportButton targetRef={containerRef} filename="world-credit-ratings" />
+          <ExportButton 
+            filename={`world-credit-ratings`}
+            draw={async (canvas, w, h) => {
+              if (!svgRef.current) return;
+              // Convert UI metric name to the export metric name
+              const exportMetric = metric === 'SCI' ? 'sci' 
+                                : metric === 'Spread' ? 'spread' 
+                                : 'market_implied';
+                                
+              const watermarkImg = await loadImage('/watermark.png').catch(() => null);
+              await drawMapExport(
+                canvas,
+                svgRef.current,
+                exportMetric,
+                MAP_TITLES[exportMetric],
+                w, h,
+                watermarkImg
+              );
+            }} 
+          />
         </div>
       </div>
 
@@ -190,6 +168,7 @@ export function MapSection({ snapshot }: MapSectionProps) {
         </div>
 
         <ComposableMap
+          ref={svgRef}
           projectionConfig={{ scale: 140 }}
           width={800}
           height={400}

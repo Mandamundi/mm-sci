@@ -7,6 +7,8 @@ import {
 import { PillToggle } from './PillToggle';
 import { CountrySelector } from './CountrySelector';
 import { ExportButton } from './ExportButton';
+import { drawCountryDetailExport, DetailMode } from '../utils/exportPanel';
+import { loadImage } from '../utils/image';
 import { SciJson, MarketJson } from '../types';
 import { useDarkMode } from '../hooks/useDarkMode';
 
@@ -259,8 +261,31 @@ export function CountryDetail({
             </span>
           )}
           <ExportButton
-            targetRef={containerRef}
             filename={`${selectedCountry.toLowerCase().replace(/\s+/g, '-')}-sci`}
+            draw={async (canvas, w, h) => {
+              const sciSeries = sciData[selectedCountry] ?? null;
+              const miSeries = marketData[selectedCountry] ?? null;
+              
+              if (!sciSeries) return;
+
+              const detailMode: DetailMode = mode === 'SCI only' ? 'sci_only' : 'vs_market';
+              const title = detailMode === 'sci_only' 
+                ? `${selectedCountry} - MM Sovereign Credit Index`
+                : `${selectedCountry} - MM SCI vs. Market-Implied SCI`;
+
+              const watermarkImg = await loadImage('/watermark.png').catch(() => null);
+              
+              // We pass the raw country data directly to the new drawing function
+              await drawCountryDetailExport(
+                canvas,
+                sciSeries as any, 
+                detailMode === 'vs_market' ? (miSeries as any) : null,
+                detailMode,
+                title,
+                w, h,
+                watermarkImg
+              );
+            }}
           />
         </div>
       </div>
