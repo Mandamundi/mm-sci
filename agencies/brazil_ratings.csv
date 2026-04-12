@@ -87,9 +87,9 @@ Brazil,S&P,B+,Negative,2002-07-01
 Brazil,S&P,B+,Stable,2003-04-01
 Brazil,S&P,B+,Positive,2003-12-01
 Brazil,S&P,BB-,Stable,2004-09-01
-Brazil,S&P,BB-,Stable,2005-11-01
-Brazil,S&P,BB-,Stable,2005-11-01
 Brazil,S&P,BB-,Positive,2005-11-01
+Brazil,S&P,BB-,Stable,2005-11-01
+Brazil,S&P,BB-,Stable,2005-11-01
 Brazil,S&P,BB,Stable,2006-02-01
 Brazil,S&P,BB,Positive,2006-11-01
 Brazil,S&P,BB+,Positive,2007-05-01
@@ -108,8 +108,8 @@ Brazil,S&P,BB-,Stable,2018-01-01
 Brazil,S&P,BB-,Developing,2019-04-01
 Brazil,S&P,BB-,Developing,2019-11-01
 Brazil,S&P,BB-,Positive,2019-12-01
-Brazil,S&P,BB,Stable,2025-06-01
 Brazil,S&P,BB,NR,2025-06-01
+Brazil,S&P,BB,Stable,2025-06-01
 Brazil,S&P,BB,NR,2025-09-01
 Brazil,S&P,BB,NR,2025-11-01
 Brazil,S&P,BB,NR,2026-02-01
