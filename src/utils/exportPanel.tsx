@@ -17,7 +17,7 @@
 //   • Download modal: three size options (same as Event Study tool)
 // ─────────────────────────────────────────────────────────────────────────────
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -388,6 +388,48 @@ function drawLegend(
  * @param w, h        Output dimensions
  * @param watermarkImg Pre-loaded watermark image (or null)
  */
+
+function stripAndRecolourSvg(svgElement: SVGSVGElement): string {
+  const clone = svgElement.cloneNode(true) as SVGSVGElement;
+ 
+  // 1. Remove every class attribute so no external CSS can interfere
+  clone.querySelectorAll('[class]').forEach(el => el.removeAttribute('class'));
+ 
+  // 2. For every <path> / <circle> / <rect> that has a computed fill,
+  //    write it as an inline fill attribute, reading from the LIVE element
+  //    (pre-clone) so we get the actual rendered colour, not a CSS variable.
+  const livePaths  = svgElement.querySelectorAll('path, circle, rect, polygon');
+  const clonePaths = clone.querySelectorAll('path, circle, rect, polygon');
+ 
+  livePaths.forEach((liveEl, i) => {
+    const cloneEl = clonePaths[i];
+    if (!cloneEl) return;
+    const computed = window.getComputedStyle(liveEl);
+    const fill     = computed.fill;
+    // Only write if it's a real colour (not "none" or empty)
+    if (fill && fill !== 'none' && fill !== '') {
+      cloneEl.setAttribute('fill', fill);
+    }
+    // Also freeze stroke
+    const stroke = computed.stroke;
+    if (stroke && stroke !== 'none' && stroke !== '') {
+      cloneEl.setAttribute('stroke', stroke);
+    }
+  });
+ 
+  // 3. Add light-blue ocean background as the very first child rect
+  const oceanRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  oceanRect.setAttribute('width',  '100%');
+  oceanRect.setAttribute('height', '100%');
+  oceanRect.setAttribute('fill',   '#cce5f0');
+  clone.insertBefore(oceanRect, clone.firstChild);
+ 
+  // 4. Do NOT embed document stylesheets — we've made the SVG self-contained
+  //    via explicit attributes, so external CSS is unwanted here.
+ 
+  return new XMLSerializer().serializeToString(clone);
+}
+
 export async function drawMapExport(
   canvas:       HTMLCanvasElement,
   svgElement:   SVGSVGElement,
@@ -414,25 +456,10 @@ export async function drawMapExport(
   const titleH = drawTitleBand(ctx, w, title);
 
   // ── Serialize SVG ──────────────────────────────────────────────────────────
-  const clone = svgElement.cloneNode(true) as SVGSVGElement;
-
-  const oceanRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-  oceanRect.setAttribute('width',  '100%');
-  oceanRect.setAttribute('height', '100%');
-  oceanRect.setAttribute('fill',   '#cce5f0');
-  clone.insertBefore(oceanRect, clone.firstChild);
-
-  const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-  styleEl.textContent = Array.from(document.styleSheets)
-    .flatMap(s => { try { return Array.from(s.cssRules).map(r => r.cssText); } catch { return []; } })
-    .join('\n');
-  clone.insertBefore(styleEl, clone.firstChild);
-
-  const svgStr  = new XMLSerializer().serializeToString(clone);
+  const svgStr  = stripAndRecolourSvg(svgElement);
   const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
   const svgUrl  = URL.createObjectURL(svgBlob);
-
-  const mapImg = await loadImage(svgUrl);
+  const mapImg  = await loadImage(svgUrl);
   URL.revokeObjectURL(svgUrl);
 
   // ── Map area ───────────────────────────────────────────────────────────────
@@ -820,138 +847,219 @@ export async function drawCountryDetailExport(
 // ─────────────────────────────────────────────────────────────────────────────
 
 type ExportFn = (canvas: HTMLCanvasElement, w: number, h: number) => Promise<void>;
-
+ 
 interface ExportButtonProps {
-  /** Async function that draws onto the provided canvas at the given dimensions. */
   draw:     ExportFn;
   filename: string;
-  /** Optional label override; defaults to "Export" */
-  label?:  string;
+  label?:   string;
 }
-
+ 
+// Inject the CSS once when the module loads.
+// This keeps all theme-aware styles in one place and out of inline style props.
+const STYLE_ID = 'mm-export-btn-styles';
+if (typeof document !== 'undefined' && !document.getElementById(STYLE_ID)) {
+  const style = document.createElement('style');
+  style.id = STYLE_ID;
+  style.textContent = `
+    /* ── Export trigger button ── */
+    .mm-export-btn {
+      background:     transparent;
+      border:         1px solid var(--mm-export-border);
+      color:          var(--mm-export-muted);
+      border-radius:  4px;
+      padding:        4px 10px;
+      font-size:      11px;
+      font-family:    Lato, Inter, system-ui, sans-serif;
+      cursor:         pointer;
+      display:        flex;
+      align-items:    center;
+      gap:            5px;
+      letter-spacing: 0.04em;
+      transition:     color 0.15s, border-color 0.15s;
+      white-space:    nowrap;
+    }
+    .mm-export-btn:hover {
+      color:        var(--mm-export-fg);
+      border-color: #1d9e75;
+    }
+ 
+    /* ── Dropdown panel ── */
+    .mm-export-dropdown {
+      position:      absolute;
+      top:           calc(100% + 6px);
+      right:         0;
+      background:    var(--mm-export-surface);
+      border:        1px solid var(--mm-export-border);
+      border-radius: 6px;
+      padding:       12px 14px;
+      z-index:       200;
+      min-width:     215px;
+      box-shadow:    0 8px 32px var(--mm-export-shadow);
+    }
+ 
+    .mm-export-dropdown-heading {
+      font-size:      9px;
+      font-weight:    700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color:          var(--mm-export-muted);
+      margin-bottom:  8px;
+    }
+ 
+    .mm-export-radio-label {
+      display:       flex;
+      align-items:   center;
+      gap:           8px;
+      padding:       5px 4px;
+      cursor:        pointer;
+      border-radius: 3px;
+      font-size:     11.5px;
+      font-family:   Lato, Inter, system-ui, sans-serif;
+      color:         var(--mm-export-muted);
+      font-weight:   400;
+    }
+    .mm-export-radio-label.selected {
+      color:       var(--mm-export-fg);
+      font-weight: 600;
+    }
+ 
+    .mm-export-radio-label input[type="radio"] {
+      accent-color: #1d9e75;
+      width:  12px;
+      height: 12px;
+    }
+ 
+    .mm-export-dl-btn {
+      width:          100%;
+      padding:        7px;
+      background:     #1d9e75;
+      color:          #ffffff;
+      border:         none;
+      border-radius:  4px;
+      font-family:    Lato, Inter, system-ui, sans-serif;
+      font-size:      11px;
+      font-weight:    600;
+      cursor:         pointer;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition:     background 0.15s, opacity 0.15s;
+      margin-top:     4px;
+    }
+    .mm-export-dl-btn:disabled {
+      background: var(--mm-export-disabled-bg);
+      color:      var(--mm-export-muted);
+      cursor:     not-allowed;
+    }
+ 
+    /* ── Theme tokens ── */
+    /* Dark mode (default, matches dashboard default) */
+    :root {
+      --mm-export-fg:          rgba(255, 255, 255, 0.90);
+      --mm-export-muted:       rgba(255, 255, 255, 0.40);
+      --mm-export-border:      rgba(255, 255, 255, 0.15);
+      --mm-export-surface:     #1e2128;
+      --mm-export-shadow:      rgba(0, 0, 0, 0.50);
+      --mm-export-disabled-bg: rgba(255, 255, 255, 0.08);
+    }
+ 
+    /* Light mode — activated by next-themes writing
+       class="light" on <html>, or data-theme="light".
+       We target both conventions so it works regardless
+       of how next-themes is configured. */
+    html.light,
+    [data-theme="light"] {
+      --mm-export-fg:          rgba(17, 24, 39, 0.90);
+      --mm-export-muted:       rgba(17, 24, 39, 0.45);
+      --mm-export-border:      rgba(17, 24, 39, 0.20);
+      --mm-export-surface:     #ffffff;
+      --mm-export-shadow:      rgba(0, 0, 0, 0.12);
+      --mm-export-disabled-bg: rgba(17, 24, 39, 0.06);
+    }
+  `;
+  document.head.appendChild(style);
+}
+ 
+export const SIZES = [
+  { label: '960 × 540  (16:9)', w: 960,  h: 540  },
+  { label: '975 × 650  (3:2)',  w: 975,  h: 650  },
+  { label: '800 × 800  (1:1)',  w: 800,  h: 800  },
+] as const;
+ 
 export function ExportButton({ draw, filename, label = 'Export' }: ExportButtonProps) {
   const [open,      setOpen]      = useState(false);
   const [sizeIdx,   setSizeIdx]   = useState(0);
   const [exporting, setExporting] = useState(false);
-
+  const dropdownRef               = useRef<HTMLDivElement>(null);
+ 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (!open) return;
+    function onClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [open]);
+ 
   const handleExport = async () => {
     setExporting(true);
     try {
       const { w, h } = SIZES[sizeIdx];
       const canvas   = document.createElement('canvas');
       await draw(canvas, w, h);
-      await new Promise(r => setTimeout(r, 60)); // let compositor finish
-      triggerDownload(canvas, `${filename}_${w}x${h}.png`);
+      await new Promise(r => setTimeout(r, 60));
+      const link      = document.createElement('a');
+      link.download   = `${filename}_${w}x${h}.png`;
+      link.href       = canvas.toDataURL('image/png');
+      link.click();
     } finally {
       setExporting(false);
       setOpen(false);
     }
   };
-
+ 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
-      {/* Trigger button */}
+    <div ref={dropdownRef} style={{ position: 'relative', display: 'inline-block' }}>
       <button
+        className="mm-export-btn"
         onClick={() => setOpen(o => !o)}
         title="Export chart as PNG"
-        style={{
-          background:    'transparent',
-          border:        '1px solid rgba(255,255,255,0.15)',
-          color:         'rgba(255,255,255,0.45)',
-          borderRadius:  '4px',
-          padding:       '4px 10px',
-          fontSize:      '11px',
-          fontFamily:    FONT,
-          cursor:        'pointer',
-          display:       'flex',
-          alignItems:    'center',
-          gap:           '5px',
-          letterSpacing: '0.04em',
-          transition:    'color 0.15s, border-color 0.15s',
-        }}
-        onMouseEnter={e => {
-          const b = e.currentTarget as HTMLButtonElement;
-          b.style.color       = 'rgba(255,255,255,0.9)';
-          b.style.borderColor = '#1d9e75';
-        }}
-        onMouseLeave={e => {
-          const b = e.currentTarget as HTMLButtonElement;
-          b.style.color       = 'rgba(255,255,255,0.45)';
-          b.style.borderColor = 'rgba(255,255,255,0.15)';
-        }}
       >
         <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-          <path d="M6 1v7M3 5.5L6 8l3-2.5M1 9.5V11h10V9.5"
-                stroke="currentColor" strokeWidth="1.3"
-                strokeLinecap="round" strokeLinejoin="round"/>
+          <path
+            d="M6 1v7M3 5.5L6 8l3-2.5M1 9.5V11h10V9.5"
+            stroke="currentColor" strokeWidth="1.3"
+            strokeLinecap="round" strokeLinejoin="round"
+          />
         </svg>
         {label}
       </button>
-
-      {/* Dropdown */}
+ 
       {open && (
-        <div style={{
-          position:     'absolute',
-          top:          'calc(100% + 6px)',
-          right:        0,
-          background:   '#1e2128',
-          border:       '1px solid rgba(255,255,255,0.12)',
-          borderRadius: '6px',
-          padding:      '12px 14px',
-          zIndex:       200,
-          minWidth:     '215px',
-          boxShadow:    '0 8px 32px rgba(0,0,0,0.5)',
-        }}>
-          <div style={{
-            fontSize: '9px', fontWeight: 700, letterSpacing: '0.16em',
-            textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)',
-            marginBottom: '8px',
-          }}>
-            Export Size
-          </div>
-
+        <div className="mm-export-dropdown">
+          <div className="mm-export-dropdown-heading">Export Size</div>
+ 
           {SIZES.map((size, i) => (
-            <label key={i} style={{
-              display: 'flex', alignItems: 'center', gap: '8px',
-              padding: '5px 4px', cursor: 'pointer', borderRadius: '3px',
-              fontSize:   '11.5px',
-              color:      sizeIdx === i ? '#ffffff' : 'rgba(255,255,255,0.45)',
-              fontWeight: sizeIdx === i ? 600 : 400,
-            }}>
+            <label
+              key={i}
+              className={`mm-export-radio-label${sizeIdx === i ? ' selected' : ''}`}
+            >
               <input
-                type="radio" name={`export-size-${filename}`}
+                type="radio"
+                name={`export-size-${filename}`}
                 checked={sizeIdx === i}
                 onChange={() => setSizeIdx(i)}
-                style={{ accentColor: '#1d9e75', width: '12px', height: '12px' }}
               />
               {size.label}
             </label>
           ))}
-
-          <div style={{
-            fontSize: '9px', color: 'rgba(255,255,255,0.3)', fontStyle: 'italic',
-            margin: '8px 0 12px', paddingLeft: '2px',
-          }}>
-          </div>
-
+ 
           <button
+            className="mm-export-dl-btn"
             onClick={handleExport}
             disabled={exporting}
-            style={{
-              width:        '100%',
-              padding:      '7px',
-              background:   exporting ? 'rgba(255,255,255,0.08)' : '#1d9e75',
-              color:        exporting ? 'rgba(255,255,255,0.35)' : '#ffffff',
-              border:       'none',
-              borderRadius: '4px',
-              fontFamily:   FONT,
-              fontSize:     '11px',
-              fontWeight:   600,
-              cursor:       exporting ? 'not-allowed' : 'pointer',
-              letterSpacing:'0.06em',
-              textTransform:'uppercase',
-              transition:   'background 0.15s',
-            }}
           >
             {exporting ? 'Generating…' : 'Download PNG'}
           </button>
