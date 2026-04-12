@@ -473,6 +473,8 @@ def main():
     if only_cds:
         print(f"  CDS only (check agency filename): {only_cds}")
 
+    PANEL_START = "2013-02-01"
+
     # Build merged panel with one-week lag on log(CDS)
     records = []
     for country in common:
@@ -482,6 +484,10 @@ def main():
         ).dropna()
         if merged.empty:
             print(f"  [WARN] {country}: no overlapping dates — skipped")
+            continue
+        merged = merged[merged.index >= PANEL_START]   # ← the fix
+        if merged.empty:
+            print(f"  [WARN] {country}: no data after PANEL_START — skipped")
             continue
         merged["Country"] = country
         merged["log_CDS"] = np.log(merged["CDS"]).shift(1)
