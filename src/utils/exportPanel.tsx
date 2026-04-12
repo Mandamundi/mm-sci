@@ -979,12 +979,6 @@ if (typeof document !== 'undefined' && !document.getElementById(STYLE_ID)) {
   document.head.appendChild(style);
 }
  
-export const SIZES = [
-  { label: '960 × 540  (16:9)', w: 960,  h: 540  },
-  { label: '975 × 650  (3:2)',  w: 975,  h: 650  },
-  { label: '800 × 800  (1:1)',  w: 800,  h: 800  },
-] as const;
- 
 export function ExportButton({ draw, filename, label = 'Export' }: ExportButtonProps) {
   const [open,      setOpen]      = useState(false);
   const [sizeIdx,   setSizeIdx]   = useState(0);
