@@ -319,40 +319,78 @@ def load_cds_weekly(path: str) -> pd.Series:
 def fit_panel_fe(df: pd.DataFrame) -> dict:
     """
     Within-group (demeaned) OLS — equivalent to LSDV fixed effects.
-    No external stats libraries required.
 
-    Model:  SCI_it = α_i + β × log(CDS_it) + ε_it
+    Observations are weighted by each country's within-sample SCI standard
+    deviation, so β is identified primarily from countries that experienced
+    genuine rating cycles (Portugal, Spain, Italy, Ireland, Turkey, Brazil,
+    Egypt) rather than stable AAA names where SCI barely moves (Germany,
+    Netherlands) and which would otherwise dilute the slope estimate toward zero.
 
-    Returns slope β, per-country intercepts α_i, fit statistics,
-    and the full panel DataFrame with MarketImplied and Divergence columns.
+    Model:  SCI_it = α_i + β × log(CDS_it-1) + ε_it
+              SCI      — Weighted + Outlook composite (from sci_panel)
+              log_CDS  — already one-week lagged before this function is called
+              α_i      — country fixed effect (structural credit level)
+              β        — shared slope, how much a CDS doubling moves implied SCI
+
+    Returns
+    -------
+    dict with keys:
+        slope        float  — β estimate
+        intercepts   dict   — {country: α_i}
+        r2_within    float  — R² on demeaned data
+        r2_overall   float  — R² on raw data
+        df_result    DataFrame — input df + MarketImplied + Divergence columns
     """
     df = df.copy().dropna(subset=["SCI", "log_CDS", "Country"])
-    means     = df.groupby("Country")[["SCI", "log_CDS"]].transform("mean")
-    df["ydm"] = df["SCI"]     - means["SCI"]
-    df["xdm"] = df["log_CDS"] - means["log_CDS"]
 
-    slope = (df["ydm"] * df["xdm"]).sum() / (df["xdm"] ** 2).sum()
+    # ── Within-group demeaning ─────────────────────────────────────────────────
+    means      = df.groupby("Country")[["SCI", "log_CDS"]].transform("mean")
+    df["ydm"]  = df["SCI"]     - means["SCI"]
+    df["xdm"]  = df["log_CDS"] - means["log_CDS"]
 
+    # ── Observation weights: within-country SCI standard deviation ─────────────
+    # Countries with near-flat SCI (Germany: 0.8 pt range, Netherlands: 3.1 pt)
+    # contribute thousands of observations but near-zero variation in the
+    # dependent variable — they cannot inform β but do bias it toward zero.
+    # Weighting by SCI std dev gives proportionally more influence to countries
+    # that actually went through rating cycles, which is where the CDS-to-rating
+    # relationship is empirically identified.
+    # Weights are normalised to mean = 1 so fit statistics remain interpretable.
+    sci_std      = df.groupby("Country")["SCI"].std().rename("sci_std")
+    df           = df.join(sci_std, on="Country")
+    df["weight"] = df["sci_std"] / df["sci_std"].mean()
+
+    # ── Weighted OLS on demeaned data ──────────────────────────────────────────
+    w     = df["weight"].values
+    ydm   = df["ydm"].values
+    xdm   = df["xdm"].values
+    slope = np.sum(w * xdm * ydm) / np.sum(w * xdm ** 2)
+
+    # ── Country intercepts: alpha_i = y_bar_i - beta * x_bar_i ────────────────
     cmeans     = df.groupby("Country")[["SCI", "log_CDS"]].mean()
     intercepts = (cmeans["SCI"] - slope * cmeans["log_CDS"]).to_dict()
 
+    # ── Fitted values & divergence ─────────────────────────────────────────────
     df["MarketImplied"] = (
         slope * df["log_CDS"] + df["Country"].map(intercepts)
     ).clip(0, 100)
     df["Divergence"] = df["SCI"] - df["MarketImplied"]
 
-    resid_dm   = df["ydm"] - slope * df["xdm"]
-    r2_within  = 1 - (resid_dm ** 2).sum() / (df["ydm"] ** 2).sum()
-    r2_overall = 1 - (df["Divergence"] ** 2).sum() / (
-        (df["SCI"] - df["SCI"].mean()) ** 2
+    # ── Fit statistics ─────────────────────────────────────────────────────────
+    resid_dm   = ydm - slope * xdm
+    r2_within  = 1 - np.sum(w * resid_dm ** 2) / np.sum(w * ydm ** 2)
+
+    resid_all  = df["SCI"].values - df["MarketImplied"].values
+    r2_overall = 1 - (resid_all ** 2).sum() / (
+        (df["SCI"].values - df["SCI"].mean()) ** 2
     ).sum()
 
     return dict(
-        slope=slope,
-        intercepts=intercepts,
-        r2_within=r2_within,
-        r2_overall=r2_overall,
-        df_result=df.drop(columns=["ydm", "xdm"]),
+        slope      = slope,
+        intercepts = intercepts,
+        r2_within  = r2_within,
+        r2_overall = r2_overall,
+        df_result  = df.drop(columns=["ydm", "xdm", "sci_std", "weight"]),
     )
 
 
