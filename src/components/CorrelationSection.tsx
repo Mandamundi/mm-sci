@@ -29,10 +29,8 @@ function quadraticFit(points: { x: number; y: number }[]): ((x: number) => numbe
     t1 += y;      t2 += x * y;      t3 += x * x * y;
   }
 
-  const mat: number[][] = [
-    [s0, s1, s2, t1],
-    [s1, s2, s3, t2],
-    [s2, s3, s4, t3],
+  const mat: number[][] = [[s0, s1, s2, t1],
+    [s1, s2, s3, t2],[s2, s3, s4, t3],
   ];
 
   for (let col = 0; col < 3; col++) {
@@ -65,7 +63,7 @@ function buildTrendLine(
   xMax: number,
   steps = 80,
 ): { x: number; trend: number }[] {
-  const result = [];
+  const result =[];
   for (let i = 0; i <= steps; i++) {
     const x = xMin + (i / steps) * (xMax - xMin);
     result.push({ x: parseFloat(x.toFixed(3)), trend: parseFloat(fn(x).toFixed(3)) });
@@ -142,7 +140,7 @@ function CorrelationChart({ title, xLabel, yLabel, points, isDark }: ChartProps)
   // Compute x/y domains with padding so dots don't sit on the axis edge
   const { xMin, xMax, yMin, yMax, trendLine } = useMemo(() => {
     if (points.length === 0) {
-      return { xMin: 0, xMax: 100, yMin: 0, yMax: 500, trendLine: [] };
+      return { xMin: 0, xMax: 100, yMin: 0, yMax: 500, trendLine:[] };
     }
 
     const xs = points.map(p => p.x);
@@ -156,7 +154,7 @@ function CorrelationChart({ title, xLabel, yLabel, points, isDark }: ChartProps)
     const yMax = Math.max(...ys) + yPad;
 
     const fn = quadraticFit(points);
-    const trendLine = fn ? buildTrendLine(fn, Math.min(...xs), Math.max(...xs)) : [];
+    const trendLine = fn ? buildTrendLine(fn, Math.min(...xs), Math.max(...xs)) :[];
 
     return { xMin, xMax, yMin, yMax, trendLine };
   }, [points]);
@@ -195,6 +193,7 @@ function CorrelationChart({ title, xLabel, yLabel, points, isDark }: ChartProps)
             domain={[xMin, xMax]}
             stroke={axisColor}
             tick={{ fill: axisColor, fontSize: 11 }}
+            tickFormatter={(value) => value.toFixed(0)} // <--- Added this line
             tickMargin={6}
             tickCount={6}
             label={{
@@ -281,7 +280,7 @@ export function CorrelationSection({ snapshot, cdsSnapshot, debt, selectedCountr
 
   const { sciPoints, debtPoints } = useMemo(() => {
     const sciPts:  ScatterPoint[] = [];
-    const debtPts: ScatterPoint[] = [];
+    const debtPts: ScatterPoint[] =[];
 
     selectedCountries.forEach((country, i) => {
       const cdsEntry = cdsSnapshot[country];
