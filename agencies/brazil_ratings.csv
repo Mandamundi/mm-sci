@@ -52,8 +52,8 @@ Brazil,Moody's,B2,Stable,1998-09-01
 Brazil,Moody's,B2,Positive,1999-06-01
 Brazil,Moody's,B2,Stable,2003-11-01
 Brazil,Moody's,B1,Positive,2005-01-01
-Brazil,Moody's,Ba3,Under Review,2006-08-01
 Brazil,Moody's,Ba2,Stable,2006-08-01
+Brazil,Moody's,Ba3,Under Review,2006-08-01
 Brazil,Moody's,Ba2,Under Review,2007-05-01
 Brazil,Moody's,Ba1,Under Review,2007-07-01
 Brazil,Moody's,Ba1,Stable,2007-08-01
@@ -88,8 +88,8 @@ Brazil,S&P,B+,Stable,2003-04-01
 Brazil,S&P,B+,Positive,2003-12-01
 Brazil,S&P,BB-,Stable,2004-09-01
 Brazil,S&P,BB-,Stable,2005-11-01
-Brazil,S&P,BB-,Positive,2005-11-01
 Brazil,S&P,BB-,Stable,2005-11-01
+Brazil,S&P,BB-,Positive,2005-11-01
 Brazil,S&P,BB,Stable,2006-02-01
 Brazil,S&P,BB,Positive,2006-11-01
 Brazil,S&P,BB+,Positive,2007-05-01
@@ -113,3 +113,4 @@ Brazil,S&P,BB,NR,2025-06-01
 Brazil,S&P,BB,NR,2025-09-01
 Brazil,S&P,BB,NR,2025-11-01
 Brazil,S&P,BB,NR,2026-02-01
+Brazil,S&P,BB,NR,2026-04-01
