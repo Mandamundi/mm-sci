@@ -3,14 +3,18 @@ import { useData } from './hooks/useData';
 import { Navbar } from './components/Navbar';
 import { MapSection } from './components/MapSection';
 import { TimeSeriesSection } from './components/TimeSeriesSection';
+import { CorrelationSection } from './components/CorrelationSection';
 import { CountryTable } from './components/CountryTable';
 import { CountryDetail } from './components/CountryDetail';
 import { HierarchyTable } from './components/HierarchyTable';
 import { ThemeProvider } from 'next-themes';
 
 function Dashboard() {
-  const { sci, market, snapshot, ratings, hierarchy, meta, loading, error } = useData();
+  const { sci, market, snapshot, ratings, hierarchy, meta, cdsSnapshot, debt, loading, error } = useData();
   const [selectedCountry, setSelectedCountry] = useState('Germany');
+  const [comparisonCountries, setComparisonCountries] = useState<string[]>(
+    ['United States', 'Germany', 'China', 'Brazil', 'India']
+  );
 
   if (loading) {
     return (
@@ -23,7 +27,7 @@ function Dashboard() {
     );
   }
 
-  if (error || !sci || !market || !snapshot || !ratings || !hierarchy || !meta) {
+  if (error || !sci || !market || !snapshot || !ratings || !hierarchy || !meta || !cdsSnapshot || !debt) {
     return (
       <div className="min-h-screen bg-[#f8f9fa] dark:bg-[#0e0f11] flex items-center justify-center">
         <div className="bg-white dark:bg-[#16181c] p-6 rounded-xl border border-red-200 dark:border-red-900/30 text-center max-w-md">
@@ -41,8 +45,20 @@ function Dashboard() {
       <main className="pt-20 px-4 sm:px-6 max-w-[1600px] mx-auto flex flex-col gap-6">
         <MapSection snapshot={snapshot} />
         
-        <TimeSeriesSection sciData={sci} marketData={market} />
-        
+        <TimeSeriesSection
+          sciData={sci}
+          marketData={market}
+          selectedCountries={comparisonCountries}
+          onSelectedCountriesChange={setComparisonCountries}
+        />
+
+        <CorrelationSection
+          snapshot={snapshot}
+          cdsSnapshot={cdsSnapshot}
+          debt={debt}
+          selectedCountries={comparisonCountries}
+        />
+
         <CountryTable 
           sciData={sci} 
           marketData={market} 

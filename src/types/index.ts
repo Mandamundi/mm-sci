@@ -68,3 +68,11 @@ export type MetaJson = {
     intercepts: { [country: string]: number };
   };
 };
+
+export type CdsSnapshotJson = {
+  [country: string]: { cds: number; iso2: string };
+};
+
+export type DebtJson = {
+  [country: string]: number;
+};

@@ -12,9 +12,11 @@ import { Search, X } from 'lucide-react';
 interface TimeSeriesSectionProps {
   sciData: SciJson;
   marketData: MarketJson;
+  selectedCountries: string[];
+  onSelectedCountriesChange: (countries: string[]) => void;
 }
 
-const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f97316', '#eab308', '#22c55e', '#14b8a6', '#6366f1'];
+export const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f97316', '#eab308', '#22c55e', '#14b8a6', '#6366f1'];
 
 type RangeKey = '3Y' | '5Y' | '10Y' | 'ALL' | 'CUSTOM';
 const RANGE_OPTIONS: RangeKey[] = ['3Y', '5Y', '10Y', 'ALL', 'CUSTOM'];
@@ -27,11 +29,8 @@ function getStartDateForRange(key: RangeKey): Date {
   return new Date('1970-01-01');
 }
 
-export function TimeSeriesSection({ sciData, marketData }: TimeSeriesSectionProps) {
+export function TimeSeriesSection({ sciData, marketData, selectedCountries, onSelectedCountriesChange }: TimeSeriesSectionProps) {
   const [metric, setMetric] = useState<'SCI' | 'Market-implied'>('SCI');
-  const [selectedCountries, setSelectedCountries] = useState<string[]>(
-    ['United States', 'Germany', 'China', 'Brazil', 'India']
-  );
   const [search, setSearch] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [rangeKey, setRangeKey] = useState<RangeKey>('ALL');
@@ -47,12 +46,10 @@ export function TimeSeriesSection({ sciData, marketData }: TimeSeriesSectionProp
   const hasMarketData = (country: string) =>
     !!marketData[country] && marketData[country].market_implied?.some(v => v !== null);
 
-  // When switching to Market-implied, drop countries that have no data.
-  // Keep the handler referentially stable via a plain function (not useCallback needed here).
   const handleMetricChange = (newMetric: 'SCI' | 'Market-implied') => {
     setMetric(newMetric);
     if (newMetric === 'Market-implied') {
-      setSelectedCountries(prev => prev.filter(c => hasMarketData(c)));
+      onSelectedCountriesChange(selectedCountries.filter(c => hasMarketData(c)));
     }
   };
 
@@ -109,12 +106,12 @@ export function TimeSeriesSection({ sciData, marketData }: TimeSeriesSectionProp
   }, [sciData, marketData, metric, selectedCountries, effectiveStart, effectiveEnd]);
 
   const removeCountry = (country: string) => {
-    setSelectedCountries(prev => prev.filter(c => c !== country));
+    onSelectedCountriesChange(selectedCountries.filter(c => c !== country));
   };
 
   const addCountry = (country: string) => {
     if (!selectedCountries.includes(country) && selectedCountries.length < 8) {
-      setSelectedCountries(prev => [...prev, country]);
+      onSelectedCountriesChange([...selectedCountries, country]);
     }
     setSearch('');
     setIsSearchOpen(false);
