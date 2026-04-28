@@ -63,7 +63,6 @@ export function TimeSeriesSection({ sciData, marketData, selectedCountries, onSe
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Effective date window
   const effectiveStart: Date = rangeKey === 'CUSTOM' && customStart
     ? new Date(customStart)
     : getStartDateForRange(rangeKey);
@@ -117,7 +116,6 @@ export function TimeSeriesSection({ sciData, marketData, selectedCountries, onSe
     setIsSearchOpen(false);
   };
 
-  // In Market-implied mode, show all countries but mark unavailable ones
   const filteredCountries = availableCountries.filter(c =>
     c.toLowerCase().includes(search.toLowerCase()) && !selectedCountries.includes(c)
   );
@@ -159,13 +157,11 @@ export function TimeSeriesSection({ sciData, marketData, selectedCountries, onSe
           <ExportButton 
             filename={`mm-sci-timeseries`}
             draw={async (canvas, w, h) => {
-              // 1. Convert your UI metric to the format the export expects
               const exportMetric = metric === 'SCI' ? 'sci' : 'market_implied';
               const title = exportMetric === 'sci' 
                 ? 'World - MM Sovereign Credit Index' 
                 : 'World - MM Market-Implied Sovereign Credit Index';
 
-              // 2. Build the data series required by the export function
               const series: CountrySeries[] = selectedCountries.flatMap(country => {
                 if (metric === 'SCI') {
                   const d = sciData[country];
@@ -178,7 +174,6 @@ export function TimeSeriesSection({ sciData, marketData, selectedCountries, onSe
                 }
               });
 
-              // 3. Draw the image
               const watermarkImg = await loadImage('/watermark.png').catch(() => null);
               await drawMultiCountryExport(canvas, series, title, w, h, watermarkImg);
             }}

@@ -193,7 +193,7 @@ function CorrelationChart({ title, xLabel, yLabel, points, isDark }: ChartProps)
             domain={[xMin, xMax]}
             stroke={axisColor}
             tick={{ fill: axisColor, fontSize: 11 }}
-            tickFormatter={(value) => value.toFixed(0)} // <--- Added this line
+            tickFormatter={(value) => value.toFixed(0)}
             tickMargin={6}
             tickCount={6}
             label={{

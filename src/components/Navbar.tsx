@@ -9,15 +9,14 @@ export function Navbar({ lastUpdated }: { lastUpdated?: string }) {
   return (
     <nav className="fixed top-0 left-0 right-0 h-14 z-50 bg-white/80 dark:bg-[#0e0f11]/80 backdrop-blur-md border-b border-gray-200 dark:border-[#2a2d35] flex items-center justify-between px-4 sm:px-6">
       <div className="flex items-center gap-2">
-        {/* Updated src to .svg */}
+        {/*  */}
         <img 
           src="/favicon.svg" 
           alt="MM Logo" 
           className="w-8 h-8 object-contain" 
         />
         
-        {/* Remember: If your SVG already has the letters "MM" in it, 
-            you can delete this next line! */}
+        {/*  */}
         <span className="text-[#dff3ef] font-bold text-lg">MM</span>
         
         <span className="text-gray-900 dark:text-white font-medium hidden sm:inline">

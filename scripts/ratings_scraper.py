@@ -1,5 +1,5 @@
 """
-MM Sovereign Credit Rating Scraper
+Sovereign Credit Rating Scraper
 ====================================
 """
 
@@ -13,7 +13,6 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# ── Logging ────────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-7s  %(message)s",
@@ -21,11 +20,9 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# ── Output directory ───────────────────────────────────────────────────────────
 OUT_DIR = Path("agencies")
 OUT_DIR.mkdir(exist_ok=True)
 
-# ── Agency name normalisation ──────────────────────────────────────────────────
 AGENCY_MAP = {
     "standard & poor's": "S&P",
     "s&p":               "S&P",
@@ -35,7 +32,6 @@ AGENCY_MAP = {
 }
 KEEP_AGENCIES = {"S&P", "Moody's", "Fitch"}
 
-# ── Country → URL slug map ─────────────────────────────────────────────────────
 SLUG_OVERRIDES = {
     "Czechia":               "Czech-Republic",
     "Ivory Coast":           "Ivory-Coast",

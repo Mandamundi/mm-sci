@@ -184,7 +184,7 @@ function drawSciAxes(
   h:           number,
   titleH:      number,
   legendH:     number,
-  dates:        string[],   // full sorted date array for x-axis labels
+  dates:        string[],
   yMin:         number,
   yMax:         number,
   hasRightAxis: boolean,
@@ -321,7 +321,7 @@ function drawLegend(
   ctx:     CanvasRenderingContext2D,
   items:   LegendItem[],
   w:       number,
-  bottomY: number,   // top of legend block
+  bottomY: number,
 ): number {
   const fontSize  = 13;
   const rowH      = fontSize + 10;

@@ -19,7 +19,6 @@ interface MapSectionProps {
 
 type Metric = 'SCI' | 'Market-implied SCI' | 'Spread';
 
-// world-atlas name → our compute_index.py country name (Title Case)
 const GEO_NAME_MAP: Record<string, string> = {
   "United States of America": "United States",
   "United States":            "United States",
@@ -53,8 +52,6 @@ const MAP_TITLES: Record<ExportMetric, string> = {
 };
 
 function getSpreadColor(val: number, isDark: boolean): string {
-  // Positive = agencies ahead of market (stress) → warm
-  // Negative = market ahead of agencies (upgrade) → cool green
   if (val > 15)  return isDark ? '#7f1d1d' : '#b91c1c'; // Deep Red
   if (val > 8)   return isDark ? '#993c1d' : '#ea580c'; // Burnt Orange
   if (val > 3)   return isDark ? '#ba7517' : '#d97706'; // Amber
@@ -96,15 +93,13 @@ export function MapSection({ snapshot }: MapSectionProps) {
   const handleZoomIn  = () => setPosition(p => ({ ...p, zoom: Math.min(p.zoom * 1.5, 4) }));
   const handleZoomOut = () => setPosition(p => ({ ...p, zoom: Math.max(p.zoom / 1.5, 1) }));
 
-  // Lookup keyed by lowercase country name for resilient matching
   const dataMap = useMemo(() => {
     const map = new Map<string, typeof snapshot[0]>();
     snapshot.forEach(d => map.set(d.country.toLowerCase(), d));
     return map;
   }, [snapshot]);
 
-  // Smoother background/line contrast profiles
-  const mapBg       = isDark ? '#1f2937' : '#f1f5f9'; // Lighter dark-mode gray, neutral light-mode slate
+  const mapBg       = isDark ? '#1f2937' : '#f1f5f9';
   const noDataFill  = isDark ? '#374151' : '#e2e8f0'; 
   const strokeColor = isDark ? '#111827' : '#ffffff'; 
 
@@ -128,8 +123,7 @@ export function MapSection({ snapshot }: MapSectionProps) {
           <ExportButton 
             filename={`world-credit-ratings`}
             draw={async (canvas, w, h) => {
-              if (!svgRef.current) return;
-              // Convert UI metric name to the export metric name
+              if (!svgRef.current) return;            
               const exportMetric = metric === 'SCI' ? 'sci' 
                                 : metric === 'Spread' ? 'spread' 
                                 : 'market_implied';

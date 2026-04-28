@@ -274,8 +274,7 @@ export function CountryDetail({
                 : `${selectedCountry} - MM SCI vs. Market-Implied SCI`;
 
               const watermarkImg = await loadImage('/watermark.png').catch(() => null);
-              
-              // We pass the raw country data directly to the new drawing function
+                      
               await drawCountryDetailExport(
                 canvas,
                 sciSeries as any, 

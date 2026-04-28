@@ -4,7 +4,6 @@ Generates two JSON data files for the correlation scatter plots:
   public/data/cds_snapshot.json  —  { country: { cds, iso2 } }
   public/data/debt.json          —  { country: debt_gdp_2024 }
 
-Run from the repo root:  python3 scripts/build_correlation_data.py
 """
 
 import json
@@ -12,7 +11,6 @@ import os
 import openpyxl
 import xlrd
 
-# ── CDS file → (SCI country name, ISO-2 code) ──────────────────────────────
 CDS_COUNTRY_MAP = {
     "australia":   ("Australia",      "AU"),
     "austria":     ("Austria",        "AT"),
@@ -86,7 +84,7 @@ for filename in sorted(os.listdir(CDS_DIR)):
         if row[0] == "Date":
             continue
         if row[1] is not None:
-            latest_cds = float(row[1])  # keep updating → last non-null wins
+            latest_cds = float(row[1])
 
     wb.close()
 

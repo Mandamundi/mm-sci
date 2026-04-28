@@ -31,7 +31,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # ══════════════════════════════════════════════════════════════════════════════
-# SECTION 1 — CONFIGURATION
+# SECTION 1 — CONFIG
 # ══════════════════════════════════════════════════════════════════════════════
 
 AGENCIES_DIR = "agencies"
@@ -69,7 +69,6 @@ RATING_SCORE = {
     "D":   0,   "SD":  0,   "RD": 0,  "WR": 0,  "WD": 0,
 }
 
-# The full rating hierarchy in order, used to build the hierarchy table JSON
 # Each entry: (grade_group, description, sp, moodys, fitch)
 RATING_HIERARCHY = [
     ("Investment Grade", "Prime",              "AAA",  "Aaa",  "AAA"),
@@ -101,7 +100,7 @@ RATING_HIERARCHY = [
 CDS_NAME_OVERRIDES: dict = {
     "us":            "United States",
     "uk":            "United Kingdom",
-    "south-korea":   "South Korea",   # in case filename uses hyphen
+    "south-korea":   "South Korea",
     "south_korea":   "South Korea",
     "saudi-arabia":  "Saudi Arabia",
     "saudi_arabia":  "Saudi Arabia",
@@ -181,10 +180,10 @@ def country_from_cds_path(path: str) -> str:
     stem = re.sub(r"^mm[_\-]", "", stem, flags=re.IGNORECASE)
     stem = re.sub(r"[_\-]5\s*year[_\-]cds.*$", "", stem, flags=re.IGNORECASE)
     raw = stem.strip().lower()
-    # Check override table first (handles us, uk, and any other short codes)
+
     if raw in CDS_NAME_OVERRIDES:
         return CDS_NAME_OVERRIDES[raw]
-    # Fall back to title-casing with spaces
+
     return stem.replace("_", " ").replace("-", " ").strip().title()
 
 
@@ -614,7 +613,6 @@ def main():
             "market_date":    mi.get("market_date"),
         })
 
-    # Sort descending by SCI
     snapshot.sort(key=lambda x: (x["sci"] is None, -(x["sci"] or 0)))
 
     _write_json("snapshot.json", snapshot)
@@ -646,7 +644,6 @@ def main():
                     "date":    row["Date"].strftime("%Y-%m-%d"),
                 }
 
-        # Full history sorted newest-first
         history = (
             df_raw[["Agency", "Rating", "Outlook", "Date"]]
             .sort_values("Date", ascending=False)
@@ -682,7 +679,6 @@ def main():
     print(f"  ✓ hierarchy.json    — {len(hierarchy)} rows")
 
     # ── 6f. meta.json ─────────────────────────────────────────────────────────
-    # Build metadata including regression stats, for display in the dashboard.
     meta = {
         "last_updated": pd.Timestamp.today().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "n_countries_sci":    len(sci_export),
