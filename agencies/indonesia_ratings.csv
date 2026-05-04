@@ -56,13 +56,14 @@ Indonesia,Fitch,BBB,Stable,2024-03-01
 Indonesia,Fitch,BBB,Stable,2025-03-01
 Indonesia,Fitch,BBB,Stable,2025-05-01
 Indonesia,Fitch,BBB,Stable,2025-07-01
-Indonesia,Fitch,BBB,Stable,2025-10-01
 Indonesia,Fitch,BBB,NR,2025-10-01
+Indonesia,Fitch,BBB,Stable,2025-10-01
 Indonesia,Fitch,BBB,NR,2025-10-01
 Indonesia,Fitch,BBB,Stable,2025-11-01
 Indonesia,Fitch,BBB,Stable,2026-01-01
 Indonesia,Fitch,BBB,Stable,2026-02-01
 Indonesia,Fitch,BBB,Negative,2026-03-01
+Indonesia,Fitch,BBB,Negative,2026-04-01
 Indonesia,Moody's,B2,Stable,2003-11-01
 Indonesia,Moody's,B2,Positive,2005-02-01
 Indonesia,Moody's,B2,Under Review,2006-02-01
@@ -79,9 +80,9 @@ Indonesia,Moody's,Baa3,Stable,2016-01-01
 Indonesia,Moody's,Baa3,Positive,2017-02-01
 Indonesia,Moody's,Baa2,Stable,2018-04-01
 Indonesia,Moody's,Baa2,Stable,2018-12-01
+Indonesia,Moody's,Baa2,Stable,2019-01-01
+Indonesia,Moody's,Baa2,Stable,2019-01-01
 Indonesia,Moody's,Baa3,Stable,2019-01-01
-Indonesia,Moody's,Baa2,Stable,2019-01-01
-Indonesia,Moody's,Baa2,Stable,2019-01-01
 Indonesia,Moody's,Baa2,Stable,2019-05-01
 Indonesia,Moody's,Baa2,Stable,2019-06-01
 Indonesia,Moody's,Baa2,Stable,2019-10-01
@@ -105,6 +106,7 @@ Indonesia,Moody's,Baa2,Stable,2025-11-01
 Indonesia,Moody's,Baa2,Stable,2026-01-01
 Indonesia,Moody's,Baa2,Negative,2026-02-01
 Indonesia,Moody's,Baa2,Negative,2026-02-01
+Indonesia,Moody's,Baa2,Stable,2026-04-01
 Indonesia,S&P,BBB-,Positive,1992-07-01
 Indonesia,S&P,BBB,Stable,1995-04-01
 Indonesia,S&P,BBB,Stable,1996-05-01
@@ -140,8 +142,8 @@ Indonesia,S&P,BB+,Positive,2015-05-01
 Indonesia,S&P,BBB-,Stable,2017-05-01
 Indonesia,S&P,BBB-,Stable,2018-12-01
 Indonesia,S&P,NR,NR,2019-03-01
-Indonesia,S&P,BBB-,Developing,2019-05-01
 Indonesia,S&P,BBB-,Stable,2019-05-01
+Indonesia,S&P,BBB-,Developing,2019-05-01
 Indonesia,S&P,BBB,Developing,2019-06-01
 Indonesia,S&P,NR,NR,2019-09-01
 Indonesia,S&P,BBB,Developing,2019-10-01
@@ -155,3 +157,4 @@ Indonesia,S&P,BBB,NR,2025-10-01
 Indonesia,S&P,BBB,NR,2026-01-01
 Indonesia,S&P,BBB,NR,2026-02-01
 Indonesia,S&P,BBB,NR,2026-02-01
+Indonesia,S&P,BBB,NR,2026-04-01
