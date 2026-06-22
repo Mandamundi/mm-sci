@@ -92,8 +92,8 @@ Greece,S&P,A+,Stable,2003-10-01
 Greece,S&P,A+,Negative,2004-09-01
 Greece,S&P,A,Stable,2004-11-01
 Greece,S&P,A,Stable,2005-11-01
-Greece,S&P,A-,Stable,2009-01-01
 Greece,S&P,A,Negative watch,2009-01-01
+Greece,S&P,A-,Stable,2009-01-01
 Greece,S&P,A-,Negative watch,2009-12-01
 Greece,S&P,BBB+,Negative watch,2009-12-01
 Greece,S&P,BBB+,Negative,2010-03-01
@@ -110,8 +110,8 @@ Greece,S&P,B,Stable,2014-09-01
 Greece,S&P,B,Negative watch,2015-01-01
 Greece,S&P,B-,Negative watch,2015-02-01
 Greece,S&P,CCC+,Negative,2015-04-01
-Greece,S&P,CCC,Negative,2015-06-01
 Greece,S&P,CCC-,Negative,2015-06-01
+Greece,S&P,CCC,Negative,2015-06-01
 Greece,S&P,CCC+,Stable,2015-07-01
 Greece,S&P,B-,Stable,2016-01-01
 Greece,S&P,B-,Positive,2017-07-01
