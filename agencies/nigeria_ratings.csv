@@ -46,6 +46,7 @@ Nigeria,Moody's,Caa1,Positive,2023-12-01
 Nigeria,Moody's,Caa3,Stable,2024-02-01
 Nigeria,Moody's,Caa1,Positive,2024-06-01
 Nigeria,Moody's,B3,Stable,2025-05-01
+Nigeria,Moody's,B3,Positive,2026-08-01
 Nigeria,S&P,BB-,Stable,2006-02-01
 Nigeria,S&P,BB-,Negative,2009-03-01
 Nigeria,S&P,B+,Stable,2009-08-01
@@ -60,6 +61,6 @@ Nigeria,S&P,B,Stable,2016-09-01
 Nigeria,S&P,B,Negative,2020-02-01
 Nigeria,S&P,B-,Stable,2020-03-01
 Nigeria,S&P,B-,Stable,2020-03-01
-Nigeria,S&P,B-,Positive,2025-11-01
 Nigeria,S&P,B-,NR,2025-11-01
+Nigeria,S&P,B-,Positive,2025-11-01
 Nigeria,S&P,B,Stable,2026-05-01
