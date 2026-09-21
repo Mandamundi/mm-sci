@@ -42,10 +42,10 @@ Indonesia,Fitch,BBB,Stable,2019-06-01
 Indonesia,Fitch,BBB,Stable,2019-10-01
 Indonesia,Fitch,BBB,Stable,2019-11-01
 Indonesia,Fitch,BBB,Stable,2020-01-01
-Indonesia,Fitch,BBB,Stable,2020-01-01
 Indonesia,Fitch,BBB,Positive,2020-01-01
 Indonesia,Fitch,BBB,Stable,2020-01-01
 Indonesia,Fitch,BBB,Positive,2020-01-01
+Indonesia,Fitch,BBB,Stable,2020-01-01
 Indonesia,Fitch,BBB,Stable,2020-01-01
 Indonesia,Fitch,BBB,Stable,2020-08-01
 Indonesia,Fitch,BBB,Stable,2021-03-01
@@ -56,8 +56,8 @@ Indonesia,Fitch,BBB,Stable,2024-03-01
 Indonesia,Fitch,BBB,Stable,2025-03-01
 Indonesia,Fitch,BBB,Stable,2025-05-01
 Indonesia,Fitch,BBB,Stable,2025-07-01
-Indonesia,Fitch,BBB,NR,2025-10-01
 Indonesia,Fitch,BBB,Stable,2025-10-01
+Indonesia,Fitch,BBB,NR,2025-10-01
 Indonesia,Fitch,BBB,NR,2025-10-01
 Indonesia,Fitch,BBB,Stable,2025-11-01
 Indonesia,Fitch,BBB,Stable,2026-01-01
@@ -81,8 +81,8 @@ Indonesia,Moody's,Baa3,Stable,2016-01-01
 Indonesia,Moody's,Baa3,Positive,2017-02-01
 Indonesia,Moody's,Baa2,Stable,2018-04-01
 Indonesia,Moody's,Baa2,Stable,2018-12-01
-Indonesia,Moody's,Baa2,Stable,2019-01-01
 Indonesia,Moody's,Baa3,Stable,2019-01-01
+Indonesia,Moody's,Baa2,Stable,2019-01-01
 Indonesia,Moody's,Baa2,Stable,2019-01-01
 Indonesia,Moody's,Baa2,Stable,2019-05-01
 Indonesia,Moody's,Baa2,Stable,2019-06-01
@@ -114,8 +114,8 @@ Indonesia,S&P,BBB,Stable,1995-04-01
 Indonesia,S&P,BBB,Stable,1996-05-01
 Indonesia,S&P,BBB-,Stable,1997-10-01
 Indonesia,S&P,BB+,Negative,1997-12-01
-Indonesia,S&P,BB,Negative watch,1998-01-01
 Indonesia,S&P,B,Negative watch,1998-01-01
+Indonesia,S&P,BB,Negative watch,1998-01-01
 Indonesia,S&P,B-,Negative watch,1998-03-01
 Indonesia,S&P,CCC+,Negative watch,1998-05-01
 Indonesia,S&P,CCC+,Negative,1998-07-01
@@ -144,8 +144,8 @@ Indonesia,S&P,BB+,Positive,2015-05-01
 Indonesia,S&P,BBB-,Stable,2017-05-01
 Indonesia,S&P,BBB-,Stable,2018-12-01
 Indonesia,S&P,NR,NR,2019-03-01
-Indonesia,S&P,BBB-,Developing,2019-05-01
 Indonesia,S&P,BBB-,Stable,2019-05-01
+Indonesia,S&P,BBB-,Developing,2019-05-01
 Indonesia,S&P,BBB,Developing,2019-06-01
 Indonesia,S&P,NR,NR,2019-09-01
 Indonesia,S&P,BBB,Developing,2019-10-01
