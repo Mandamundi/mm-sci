@@ -3,7 +3,7 @@
 # ══════════════════════════════════════════════════════════════════════════════
 #
 # Reads:
-#   agencies/   one CSV per country from scraper.py
+#   agencies/   one CSV per country, maintained by scripts/ratings_scraper.py
 #               columns: Country | Agency | Rating | Outlook | Date
 #
 #   cds/        one Excel per country, e.g. mm_austria-5year-cds.xlsx

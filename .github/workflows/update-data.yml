@@ -18,9 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install playwright beautifulsoup4 pandas openpyxl
-          playwright install chromium
-          playwright install-deps chromium
+          pip install requests beautifulsoup4 pandas numpy openpyxl
 
       - name: Run scraper
         run: python scripts/ratings_scraper.py
