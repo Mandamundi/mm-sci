@@ -12,19 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v5
         with:
-          python-version: '3.12'
+          enable-cache: true
 
       - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4 pandas numpy openpyxl
+        run: uv sync --locked   # Python version from .python-version, deps from uv.lock
 
       - name: Run scraper
-        run: python scripts/ratings_scraper.py
+        run: uv run scripts/ratings_scraper.py
 
       - name: Run index computation
-        run: python scripts/compute_index.py
+        run: uv run scripts/compute_index.py
 
       - name: Commit and push
         run: |

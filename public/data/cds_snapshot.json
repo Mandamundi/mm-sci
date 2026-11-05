@@ -1,94 +1,94 @@
 {
   "Australia": {
-    "cds": 15.8189,
+    "cds": 17.4999,
     "iso2": "AU"
   },
   "Austria": {
-    "cds": 16.0047,
+    "cds": 18.9945,
     "iso2": "AT"
   },
   "Belgium": {
-    "cds": 20.9545,
+    "cds": 44.7013,
     "iso2": "BE"
   },
   "Brazil": {
-    "cds": 130.9216,
+    "cds": 149.4226,
     "iso2": "BR"
   },
   "Canada": {
-    "cds": 18.98,
+    "cds": 20.84,
     "iso2": "CA"
   },
   "China": {
-    "cds": 45.5151,
+    "cds": 37.1654,
     "iso2": "CN"
   },
   "Denmark": {
-    "cds": 10.3956,
+    "cds": 11.0467,
     "iso2": "DK"
   },
   "Egypt": {
-    "cds": 342.6189,
+    "cds": 342.2307,
     "iso2": "EG"
   },
   "Finland": {
-    "cds": 14.5293,
+    "cds": 16.2887,
     "iso2": "FI"
   },
   "France": {
-    "cds": 31.5878,
+    "cds": 98.6495,
     "iso2": "FR"
   },
   "Germany": {
-    "cds": 10.7043,
+    "cds": 13.1408,
     "iso2": "DE"
   },
   "Indonesia": {
-    "cds": 88.0194,
+    "cds": 104.3495,
     "iso2": "ID"
   },
   "Ireland": {
-    "cds": 18.1746,
+    "cds": 18.6239,
     "iso2": "IE"
   },
   "Italy": {
-    "cds": 35.2322,
+    "cds": 73.9651,
     "iso2": "IT"
   },
   "Japan": {
-    "cds": 28.8908,
+    "cds": 30.9129,
     "iso2": "JP"
   },
   "Mexico": {
-    "cds": 97.7956,
+    "cds": 97.4796,
     "iso2": "MX"
   },
   "Netherlands": {
-    "cds": 10.4053,
+    "cds": 14.8819,
     "iso2": "NL"
   },
   "Portugal": {
-    "cds": 20.4859,
+    "cds": 26.4995,
     "iso2": "PT"
   },
   "Spain": {
-    "cds": 20.566,
+    "cds": 33.7118,
     "iso2": "ES"
   },
   "Sweden": {
-    "cds": 9.6946,
+    "cds": 10.8159,
     "iso2": "SE"
   },
   "Turkey": {
-    "cds": 239.931,
+    "cds": 260.0767,
     "iso2": "TR"
   },
   "United Kingdom": {
-    "cds": 22.1695,
+    "cds": 27.4546,
     "iso2": "GB"
   },
   "United States": {
-    "cds": 39.3756,
+    "cds": 47.8974,
     "iso2": "US"
   }
 }

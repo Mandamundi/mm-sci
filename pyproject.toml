@@ -1,0 +1,18 @@
+[project]
+name = "mm-sci-dashboard"
+version = "0.1.0"
+description = "Data pipeline for the MM Sovereign Credit Index (ratings scraper, index computation, correlation data)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "numpy>=1.26",
+    "openpyxl>=3.1",
+    "pandas>=2.2",
+    "requests>=2.32",
+    "xlrd>=2.0",
+]
+
+[tool.uv]
+# Scripts only, nothing to build or install as a package.
+package = false
