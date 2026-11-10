@@ -1,0 +1,117 @@
+﻿id,country,agencies_csv,backend_name_en,backend_name_zh,backend_slug
+85908,Israel,israel_ratings.csv,Israel,以色列-MM主權信用指數(SCI),israel-mm-sci
+85909,Chile,chile_ratings.csv,Chile,智利-MM主權信用指數(SCI),chile-mm-sci
+85910,Croatia,croatia_ratings.csv,Croatia,克羅埃西亞-MM主權信用指數(SCI),croatia-mm-sci
+85911,Poland,poland_ratings.csv,Poland,波蘭-MM主權信用指數(SCI),poland-mm-sci
+85912,Cyprus,cyprus_ratings.csv,Cyprus,賽普勒斯-MM主權信用指數(SCI),cyprus-mm-sci
+85913,Latvia,latvia_ratings.csv,Latvia,拉脫維亞-MM主權信用指數(SCI),latvia-mm-sci
+85914,Andorra,andorra_ratings.csv,Andorra,安道爾-MM主權信用指數(SCI),andorra-mm-sci
+85915,Malta,malta_ratings.csv,Malta,馬爾他-MM主權信用指數(SCI),malta-mm-sci
+85916,Malaysia,malaysia_ratings.csv,Malaysia,馬來西亞-MM主權信用指數(SCI),malaysia-mm-sci
+85917,China,china_ratings.csv,China,中國-MM主權信用指數(SCI),china-mm-sci
+85918,Japan,japan_ratings.csv,Japan,日本-MM主權信用指數(SCI),japan-mm-sci
+85919,Lithuania,lithuania_ratings.csv,Lithuania,立陶宛-MM主權信用指數(SCI),lithuania-mm-sci
+85920,Portugal,portugal_ratings.csv,Portugal,葡萄牙-MM主權信用指數(SCI),portugal-mm-sci
+85921,Spain,spain_ratings.csv,Spain,西班牙-MM主權信用指數(SCI),spain-mm-sci
+85922,Slovakia,slovakia_ratings.csv,Slovakia,斯洛伐克-MM主權信用指數(SCI),slovakia-mm-sci
+85923,Iceland,iceland_ratings.csv,Iceland,冰島-MM主權信用指數(SCI),iceland-mm-sci
+85924,France,france_ratings.csv,France,法國-MM主權信用指數(SCI),france-mm-sci
+85925,Saudi Arabia,saudi_arabia_ratings.csv,Saudi Arabia,沙烏地阿拉伯-MM主權信用指數(SCI),saudi-arabia-mm-sci
+85926,Slovenia,slovenia_ratings.csv,Slovenia,斯洛維尼亞-MM主權信用指數(SCI),slovenia-mm-sci
+85927,Belgium,belgium_ratings.csv,Belgium,比利時-MM主權信用指數(SCI),belgium-mm-sci
+85928,Qatar,qatar_ratings.csv,Qatar,卡達-MM主權信用指數(SCI),qatar-mm-sci
+85929,South Korea,south_korea_ratings.csv,South Korea,南韓-MM主權信用指數(SCI),s-korea-mm-sci
+85930,United Arab Emirates,united_arab_emirates_ratings.csv,UAE,阿聯酋-MM主權信用指數(SCI),uae-mm-sci
+85931,Estonia,estonia_ratings.csv,Estonia,愛沙尼亞-MM主權信用指數(SCI),estonia-mm-sci
+85932,Taiwan,taiwan_ratings.csv,Taiwan,台灣-MM主權信用指數(SCI),taiwan-mm-sci
+85933,Kuwait,kuwait_ratings.csv,Kuwait,科威特-MM主權信用指數(SCI),kuwait-mm-sci
+85934,Czechia,czechia_ratings.csv,Czechia,捷克-MM主權信用指數(SCI),czechia-mm-sci
+85935,United Kingdom,united_kingdom_ratings.csv,UK,英國-MM主權信用指數(SCI),uk-mm-sci
+85936,Austria,austria_ratings.csv,Austria,奧地利-MM主權信用指數(SCI),austria-mm-sci
+85937,Finland,finland_ratings.csv,Finland,芬蘭-MM主權信用指數(SCI),finland-mm-sci
+85938,Ireland,ireland_ratings.csv,Ireland,愛爾蘭-MM主權信用指數(SCI),ireland-mm-sci
+85939,Hong Kong,hong_kong_ratings.csv,Hong Kong,香港-MM主權信用指數(SCI),hong-kong-mm-sci
+85940,United States,usa_ratings.csv,US,美國-MM主權信用指數(SCI),us-mm-sci
+85941,New Zealand,new_zealand_ratings.csv,New Zealand,紐西蘭-MM主權信用指數(SCI),new-zealand-mm-sci
+85942,Canada,canada_ratings.csv,Canada,加拿大-MM主權信用指數(SCI),canada-mm-sci
+85943,Australia,australia_ratings.csv,Australia,澳大利亞-MM主權信用指數(SCI),australia-mm-sci
+85944,Denmark,denmark_ratings.csv,Denmark,丹麥-MM主權信用指數(SCI),denmark-mm-sci
+85945,Germany,germany_ratings.csv,Germany,德國-MM主權信用指數(SCI),germany-mm-sci
+85946,Luxembourg,luxembourg_ratings.csv,Luxembourg,盧森堡-MM主權信用指數(SCI),luxembourg-mm-sci
+85947,Netherlands,netherlands_ratings.csv,Netherlands,荷蘭-MM主權信用指數(SCI),netherlands-mm-sci
+85948,Norway,norway_ratings.csv,Norway,挪威-MM主權信用指數(SCI),norway-mm-sci
+85949,Singapore,singapore_ratings.csv,Singapore,新加坡-MM主權信用指數(SCI),singapore-mm-sci
+85950,Sweden,sweden_ratings.csv,Sweden,瑞典-MM主權信用指數(SCI),sweden-mm-sci
+85951,Switzerland,switzerland_ratings.csv,Switzerland,瑞士-MM主權信用指數(SCI),switzerland-mm-sci
+85952,Bahrain,bahrain_ratings.csv,Bahrain,巴林-MM主權信用指數(SCI),bahrain-mm-sci
+85953,Egypt,egypt_ratings.csv,Egypt,埃及-MM主權信用指數(SCI),egypt-mm-sci
+85954,Kenya,kenya_ratings.csv,Kenya,肯亞-MM主權信用指數(SCI),kenya-mm-sci
+85955,Mali,mali_ratings.csv,Mali,馬利-MM主權信用指數(SCI),mali-mm-sci
+85956,Turkey,turkey_ratings.csv,Turkey,土耳其-MM主權信用指數(SCI),turkey-mm-sci
+85957,Gabon,gabon_ratings.csv,Gabon,加彭-MM主權信用指數(SCI),gabon-mm-sci
+85958,Nicaragua,nicaragua_ratings.csv,Nicaragua,尼加拉瓜-MM主權信用指數(SCI),nicaragua-mm-sci
+85959,Nigeria,nigeria_ratings.csv,Nigeria,奈及利亞-MM主權信用指數(SCI),nigeria-mm-sci
+85960,Uganda,uganda_ratings.csv,Uganda,烏干達-MM主權信用指數(SCI),uganda-mm-sci
+85961,Cameroon,cameroon_ratings.csv,Cameroon,喀麥隆-MM主權信用指數(SCI),cameroon-mm-sci
+85962,Angola,angola_ratings.csv,Angola,安哥拉-MM主權信用指數(SCI),angola-mm-sci
+85963,Ghana,ghana_ratings.csv,Ghana,迦納-MM主權信用指數(SCI),ghana-mm-sci
+85964,Iraq,iraq_ratings.csv,Iraq,伊拉克-MM主權信用指數(SCI),iraq-mm-sci
+85965,Pakistan,pakistan_ratings.csv,Pakistan,巴基斯坦-MM主權信用指數(SCI),pakistan-mm-sci
+85966,Papua New Guinea,papua_new_guinea_ratings.csv,Papua New Guinea,巴布亞紐幾內亞-MM主權信用指數(SCI),png-mm-sci
+85967,Ecuador,ecuador_ratings.csv,Ecuador,厄瓜多-MM主權信用指數(SCI),ecuador-mm-sci
+85968,Kyrgyzstan,kyrgyzstan_ratings.csv,Kyrgyzstan,吉爾吉斯-MM主權信用指數(SCI),kyrgyzstan-mm-sci
+85969,Barbados,barbados_ratings.csv,Barbados,巴貝多-MM主權信用指數(SCI),barbados-mm-sci
+85970,Rwanda,rwanda_ratings.csv,Rwanda,盧安達-MM主權信用指數(SCI),rwanda-mm-sci
+85971,Brazil,brazil_ratings.csv,Brazil,巴西-MM主權信用指數(SCI),brazil-mm-sci
+85972,Georgia,georgia_ratings.csv,Georgia,喬治亞-MM主權信用指數(SCI),georgia-mm-sci
+85973,Ivory Coast,ivory_coast_ratings.csv,Ivory Coast,象牙海岸-MM主權信用指數(SCI),ivory-coast-mm-sci
+85974,Costa Rica,costa_rica_ratings.csv,Costa Rica,哥斯大黎加-MM主權信用指數(SCI),costa-rica-mm-sci
+85975,Uzbekistan,uzbekistan_ratings.csv,Uzbekistan,烏茲別克-MM主權信用指數(SCI),uzbekistan-mm-sci
+85976,Colombia,colombia_ratings.csv,Colombia,哥倫比亞-MM主權信用指數(SCI),colombia-mm-sci
+85977,Dominican Republic,dominican_republic_ratings.csv,Dominican Republic,多明尼加-MM主權信用指數(SCI),dominican-rep-mm-sci
+85978,South Africa,south_africa_ratings.csv,South Africa,南非-MM主權信用指數(SCI),s-africa-mm-sci
+85979,Jamaica,jamaica_ratings.csv,Jamaica,牙買加-MM主權信用指數(SCI),jamaica-mm-sci
+85980,Vietnam,vietnam_ratings.csv,Vietnam,越南-MM主權信用指數(SCI),vietnam-mm-sci
+85981,Honduras,honduras_ratings.csv,Honduras,宏都拉斯-MM主權信用指數(SCI),honduras-mm-sci
+85982,Benin,benin_ratings.csv,Benin,貝南-MM主權信用指數(SCI),benin-mm-sci
+85983,Mongolia,mongolia_ratings.csv,Mongolia,蒙古-MM主權信用指數(SCI),mongolia-mm-sci
+85984,Bangladesh,bangladesh_ratings.csv,Bangladesh,孟加拉-MM主權信用指數(SCI),bangladesh-mm-sci
+85985,Bahamas,bahamas_ratings.csv,Bahamas,巴哈馬-MM主權信用指數(SCI),bahamas-mm-sci
+85986,Armenia,armenia_ratings.csv,Armenia,亞美尼亞-MM主權信用指數(SCI),armenia-mm-sci
+85987,Jordan,jordan_ratings.csv,Jordan,約旦-MM主權信用指數(SCI),jordan-mm-sci
+85988,Guatemala,guatemala_ratings.csv,Guatemala,瓜地馬拉-MM主權信用指數(SCI),guatemala-mm-sci
+85989,Azerbaijan,azerbaijan_ratings.csv,Azerbaijan,亞塞拜然-MM主權信用指數(SCI),azerbaijan-mm-sci
+85990,Oman,oman_ratings.csv,Oman,阿曼-MM主權信用指數(SCI),oman-mm-sci
+85991,Indonesia,indonesia_ratings.csv,Indonesia,印尼-MM主權信用指數(SCI),indonesia-mm-sci
+85992,Greece,greece_ratings.csv,Greece,希臘-MM主權信用指數(SCI),greece-mm-sci
+85993,Mexico,mexico_ratings.csv,Mexico,墨西哥-MM主權信用指數(SCI),mexico-mm-sci
+85994,India,india_ratings.csv,India,印度-MM主權信用指數(SCI),india-mm-sci
+85995,Bulgaria,bulgaria_ratings.csv,Bulgaria,保加利亞-MM主權信用指數(SCI),bulgaria-mm-sci
+85996,Morocco,morocco_ratings.csv,Morocco,摩洛哥-MM主權信用指數(SCI),morocco-mm-sci
+85997,Paraguay,paraguay_ratings.csv,Paraguay,巴拉圭-MM主權信用指數(SCI),paraguay-mm-sci
+85998,Serbia,serbia_ratings.csv,Serbia,塞爾維亞-MM主權信用指數(SCI),serbia-mm-sci
+85999,Kazakhstan,kazakhstan_ratings.csv,Kazakhstan,哈薩克-MM主權信用指數(SCI),kazakhstan-mm-sci
+86000,Peru,peru_ratings.csv,Peru,秘魯-MM主權信用指數(SCI),peru-mm-sci
+86001,Hungary,hungary_ratings.csv,Hungary,匈牙利-MM主權信用指數(SCI),hungary-mm-sci
+86002,Romania,romania_ratings.csv,Romania,羅馬尼亞-MM主權信用指數(SCI),romania-mm-sci
+86003,Uruguay,uruguay_ratings.csv,Uruguay,烏拉圭-MM主權信用指數(SCI),uruguay-mm-sci
+86004,Philippines,philippines_ratings.csv,Philippines,菲律賓-MM主權信用指數(SCI),philippines-mm-sci
+86005,Thailand,thailand_ratings.csv,Thailand,泰國-MM主權信用指數(SCI),thailand-mm-sci
+86006,Italy,italy_ratings.csv,Italy,義大利-MM主權信用指數(SCI),italy-mm-sci
+86007,Russia,russia_ratings.csv,Russia,俄羅斯-MM主權信用指數(SCI),russia-mm-sci
+86008,Belarus,belarus_ratings.csv,Belarus,白俄羅斯-MM主權信用指數(SCI),belarus-mm-sci
+86009,Ethiopia,ethiopia_ratings.csv,Ethiopia,衣索比亞-MM主權信用指數(SCI),ethiopia-mm-sci
+86010,Venezuela,venezuela_ratings.csv,Venezuela,委內瑞拉-MM主權信用指數(SCI),venezuela-mm-sci
+86011,Zambia,zambia_ratings.csv,Zambia,尚比亞-MM主權信用指數(SCI),zambia-mm-sci
+86012,Suriname,suriname_ratings.csv,Suriname,蘇利南-MM主權信用指數(SCI),suriname-mm-sci
+86013,Ukraine,ukraine_ratings.csv,Ukraine,烏克蘭-MM主權信用指數(SCI),ukraine-mm-sci
+86014,Mozambique,mozambique_ratings.csv,Mozambique,莫三比克-MM主權信用指數(SCI),mozambique-mm-sci
+86015,Bolivia,bolivia_ratings.csv,Bolivia,玻利維亞-MM主權信用指數(SCI),bolivia-mm-sci
+86016,Argentina,argentina_ratings.csv,Argentina,阿根廷-MM主權信用指數(SCI),argentina-mm-sci
+86017,Sri Lanka,sri_lanka_ratings.csv,Sri Lanka,斯里蘭卡-MM主權信用指數(SCI),sri-lanka-mm-sci
+86018,Laos,laos_ratings.csv,Laos,寮國-MM主權信用指數(SCI),laos-mm-sci
+86019,Republic Of The Congo,republic_of_the_congo_ratings.csv,Republic of the Congo,剛果共和國-MM主權信用指數(SCI),congo-mm-sci
+86020,El Salvador,el_salvador_ratings.csv,El Salvador,薩爾瓦多-MM主權信用指數(SCI),el-salvador-mm-sci
+86021,Tunisia,tunisia_ratings.csv,Tunisia,突尼西亞-MM主權信用指數(SCI),tunisia-mm-sci
+86022,Panama,panama_ratings.csv,Panama,巴拿馬-MM主權信用指數(SCI),panama-mm-sci
+86023,Lebanon,lebanon_ratings.csv,Lebanon,黎巴嫩-MM主權信用指數(SCI),lebanon-mm-sci

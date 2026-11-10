@@ -22,4 +22,8 @@
 
 Steps 2–3 run every Monday through `.github/workflows/update-data.yml`.
 
+### Backend series IDs
+
+`reference/sci_backend_ids.csv` maps each country to its SCI series ID in the MacroMicro backend (85908–86023), along with the backend's English and Chinese names and slug, its key in `public/data/sci.json`, and its CSV in `agencies/`. Use it when uploading values manually (id / date / value, where date is the first of the month and value is that month's month-end entry in `sci.json`).
+
 To add a Python dependency: `uv add <package>` (updates `pyproject.toml` and `uv.lock`).
